@@ -1,0 +1,228 @@
+2022-10-15 17:30:45.568 IST [52304] LOG:  starting PostgreSQL 14.5 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0, 64-bit
+2022-10-15 17:30:45.569 IST [52304] LOG:  listening on IPv4 address "127.0.0.1", port 9432
+2022-10-15 17:30:45.570 IST [52304] LOG:  listening on Unix socket "/tmp/.s.PGSQL.9432"
+2022-10-15 17:30:45.573 IST [52305] LOG:  database system was shut down at 2022-10-15 17:29:05 IST
+2022-10-15 17:30:45.575 IST [52304] LOG:  database system is ready to accept connections
+2022-10-15 17:31:14.045 IST [52304] LOG:  received fast shutdown request
+2022-10-15 17:31:14.046 IST [52304] LOG:  aborting any active transactions
+2022-10-15 17:31:14.047 IST [52304] LOG:  background worker "logical replication launcher" (PID 52312) exited with exit code 1
+2022-10-15 17:31:14.047 IST [52306] LOG:  shutting down
+2022-10-15 17:31:14.068 IST [52304] LOG:  database system is shut down
+2022-10-15 23:39:29.481 IST [103678] FATAL:  lock file "postmaster.pid" already exists
+2022-10-15 23:39:29.481 IST [103678] HINT:  Is another postgres (PID 102452) running in data directory "/home/nadesh/git/postgresql/install/data"?
+2022-10-15 23:40:41.809 IST [103914] LOG:  starting PostgreSQL 14.5 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0, 64-bit
+2022-10-15 23:40:41.809 IST [103914] LOG:  listening on IPv4 address "0.0.0.0", port 9432
+2022-10-15 23:40:41.809 IST [103914] LOG:  listening on IPv6 address "::", port 9432
+2022-10-15 23:40:41.811 IST [103914] LOG:  listening on Unix socket "/tmp/.s.PGSQL.9432"
+2022-10-15 23:40:41.814 IST [103915] LOG:  database system was shut down at 2022-10-15 23:40:25 IST
+2022-10-15 23:40:41.816 IST [103914] LOG:  database system is ready to accept connections
+	 1: id	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "00128"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Zhang"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Comp. Sci."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "102"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "12345"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Shankar"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Comp. Sci."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "32"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "19991"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Brandt"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "History"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "80"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "23121"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Chavez"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Finance"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "110"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "44553"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Peltier"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Physics"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "56"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "45678"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Levy"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Physics"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "46"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "54321"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Williams"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Comp. Sci."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "54"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "55739"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Sanchez"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Music"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "38"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "70557"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Snow"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Physics"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "0"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "76543"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Brown"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Comp. Sci."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "58"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "76653"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Aoi"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Elec. Eng."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "60"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "98765"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Bourikas"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Elec. Eng."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "98"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "98988"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Tanaka"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Biology"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "120"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+backend> 2022-10-15 23:40:59.295 IST [103914] LOG:  received fast shutdown request
+2022-10-15 23:40:59.296 IST [103914] LOG:  aborting any active transactions
+2022-10-15 23:40:59.297 IST [103914] LOG:  background worker "logical replication launcher" (PID 103921) exited with exit code 1
+2022-10-15 23:40:59.297 IST [103916] LOG:  shutting down
+2022-10-15 23:40:59.311 IST [103914] LOG:  database system is shut down
+2022-10-15 23:41:44.646 IST [104391] LOG:  starting PostgreSQL 14.5 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0, 64-bit
+2022-10-15 23:41:44.646 IST [104391] LOG:  listening on IPv4 address "127.0.0.1", port 9432
+2022-10-15 23:41:44.648 IST [104391] LOG:  listening on Unix socket "/tmp/.s.PGSQL.9432"
+2022-10-15 23:41:44.650 IST [104392] LOG:  database system was shut down at 2022-10-15 23:40:59 IST
+2022-10-15 23:41:44.652 IST [104391] LOG:  database system is ready to accept connections
+	 1: schema	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "pg_temp_3"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "tmp_table"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "advisor"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "classroom"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "course"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "department"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "foo"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "instructor"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "prereq"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "section"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "student"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "takes"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "teaches"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "time_slot"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+backend> 	 1: name	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: owner	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: encoding	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 4: collate	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 5: ctype	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 6: access privileges	(typeid = 25, len = -1, typmod = -1, byval = f)
+	----
+	 1: name = "postgres"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: encoding = "UTF8"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 4: collate = "en_IN"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 5: ctype = "en_IN"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: name = "template0"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: encoding = "UTF8"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 4: collate = "en_IN"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 5: ctype = "en_IN"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 6: access privileges = "=c/nadesh
+nadesh=CTc/nadesh"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	----
+	 1: name = "template1"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: encoding = "UTF8"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 4: collate = "en_IN"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 5: ctype = "en_IN"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 6: access privileges = "=c/nadesh
+nadesh=CTc/nadesh"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	----
+	 1: name = "test"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: encoding = "UTF8"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 4: collate = "en_IN"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 5: ctype = "en_IN"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+backend> 2022-10-15 23:50:13.335 IST [104391] LOG:  received fast shutdown request
+2022-10-15 23:50:13.336 IST [104391] LOG:  aborting any active transactions
+2022-10-15 23:50:13.337 IST [104391] LOG:  background worker "logical replication launcher" (PID 104398) exited with exit code 1
+2022-10-15 23:50:13.337 IST [104393] LOG:  shutting down
+2022-10-15 23:50:13.349 IST [104391] LOG:  database system is shut down
+2022-10-15 23:50:20.885 IST [105559] LOG:  starting PostgreSQL 14.5 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0, 64-bit
+2022-10-15 23:50:20.885 IST [105559] LOG:  listening on IPv4 address "127.0.0.1", port 9432
+2022-10-15 23:50:20.886 IST [105559] LOG:  listening on Unix socket "/tmp/.s.PGSQL.9432"
+2022-10-15 23:50:20.888 IST [105560] LOG:  database system was shut down at 2022-10-15 23:50:13 IST
+2022-10-15 23:50:20.890 IST [105559] LOG:  database system is ready to accept connections
+2022-10-15 23:51:37.913 IST [105559] LOG:  received fast shutdown request
+2022-10-15 23:51:37.914 IST [105559] LOG:  aborting any active transactions
+2022-10-15 23:51:37.915 IST [105559] LOG:  background worker "logical replication launcher" (PID 105566) exited with exit code 1
+2022-10-15 23:51:37.915 IST [105561] LOG:  shutting down
+2022-10-15 23:51:37.927 IST [105559] LOG:  database system is shut down
+2022-10-15 23:51:56.436 IST [105838] LOG:  starting PostgreSQL 14.5 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0, 64-bit
+2022-10-15 23:51:56.437 IST [105838] LOG:  listening on IPv4 address "127.0.0.1", port 9432
+2022-10-15 23:51:56.438 IST [105838] LOG:  listening on Unix socket "/tmp/.s.PGSQL.9432"
+2022-10-15 23:51:56.441 IST [105839] LOG:  database system was shut down at 2022-10-15 23:51:37 IST
+2022-10-15 23:51:56.444 IST [105838] LOG:  database system is ready to accept connections
+2022-10-15 23:52:59.017 IST [105838] LOG:  received fast shutdown request
+2022-10-15 23:52:59.018 IST [105838] LOG:  aborting any active transactions
+2022-10-15 23:52:59.019 IST [105838] LOG:  background worker "logical replication launcher" (PID 105845) exited with exit code 1
+2022-10-15 23:52:59.019 IST [105840] LOG:  shutting down
+2022-10-15 23:52:59.030 IST [105838] LOG:  database system is shut down

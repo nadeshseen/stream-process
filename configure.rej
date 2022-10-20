@@ -1,0 +1,52 @@
+--- home/pramod/git/postgresql/configure	2021-08-28 10:08:08.944219199 +0530
++++ postgresql/configure	2021-11-30 11:53:43.593854713 +0530
+@@ -4321,13 +4321,13 @@
+   CFLAGS=$ac_save_CFLAGS
+ elif test $ac_cv_prog_cc_g = yes; then
+   if test "$GCC" = yes; then
+-    CFLAGS="-g -O0"
++    CFLAGS="-g -O2"
+   else
+     CFLAGS="-g"
+   fi
+ else
+   if test "$GCC" = yes; then
+-    CFLAGS="-O0"
++    CFLAGS="-O2"
+   else
+     CFLAGS=
+   fi
+@@ -4852,13 +4852,13 @@
+   CXXFLAGS=$ac_save_CXXFLAGS
+ elif test $ac_cv_prog_cxx_g = yes; then
+   if test "$GXX" = yes; then
+-    CXXFLAGS="-g -O0"
++    CXXFLAGS="-g -O2"
+   else
+     CXXFLAGS="-g"
+   fi
+ else
+   if test "$GXX" = yes; then
+-    CXXFLAGS="-O0"
++    CXXFLAGS="-O2"
+   else
+     CXXFLAGS=
+   fi
+@@ -5216,7 +5216,7 @@
+ elif test "$enable_coverage" = yes; then
+   : # no optimization by default
+ elif test "$GCC" = yes; then
+-  CFLAGS="-O0"
++  CFLAGS="-O2"
+ else
+   # if the user selected debug mode, don't use -O
+   if test "$enable_debug" != yes; then
+@@ -5231,7 +5231,7 @@
+ elif test "$enable_coverage" = yes; then
+   : # no optimization by default
+ elif test "$GCC" = yes; then
+-  CXXFLAGS="-O0"
++  CXXFLAGS="-O2"
+ else
+   # if the user selected debug mode, don't use -O
+   if test "$enable_debug" != yes; then

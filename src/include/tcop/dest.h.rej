@@ -1,0 +1,12 @@
+--- home/pramod/git/postgresql/src/include/tcop/dest.h	2021-11-27 22:32:03.606812688 +0530
++++ postgresql/src/include/tcop/dest.h	2021-11-30 11:53:44.613851974 +0530
+@@ -97,8 +97,7 @@
+ 	DestCopyOut,				/* results sent to COPY TO code */
+ 	DestSQLFunction,			/* results sent to SQL-language func mgr */
+ 	DestTransientRel,			/* results sent to transient relation */
+-	DestTupleQueue,				/* results sent to tuple queue */
+-	DestTupleCustom
++	DestTupleQueue				/* results sent to tuple queue */
+ } CommandDest;
+ 
+ /* ----------------

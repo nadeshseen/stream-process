@@ -1,0 +1,38 @@
+--- home/pramod/git/postgresql/src/include/postgres.h	2021-11-29 21:57:00.108148946 +0530
++++ postgresql/src/include/postgres.h	2021-11-30 11:53:44.601852006 +0530
+@@ -52,35 +52,6 @@
+  * ----------------------------------------------------------------
+  */
+ 
+-
+-//typedef struct stream_values{
+-//	int sum;
+-//} stream_values;
+-//
+-//struct stream_values *stream;
+-
+-extern int stream_sum ;
+-
+-struct stream_aggregates{
+-	int stream_sum;
+-	int stream_max;
+-	int stream_min;
+-	int stream_cnt;
+-}stream_aggregates;
+-
+-//extern int stream_id_sum;
+-//extern int stream_marks_sum;
+-//int stream_sum = 0;
+-//int stream_id_sum = 0;
+-//int stream_marks_sum = 0;
+-//int value_counter = 0;
+-//struct stream_insert_values{
+-//	int id;
+-//	char *name;
+-//	int
+-//}stream_insert_values;
+-
+-//int stream_result_sum = 0;
+ /*
+  * struct varatt_external is a traditional "TOAST pointer", that is, the
+  * information needed to fetch a Datum stored out-of-line in a TOAST table.

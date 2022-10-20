@@ -1,0 +1,13 @@
+--- postgresql/install/data/postmaster.pid	2021-11-30 10:55:03.913009000 +0530
++++ home/pramod/git/postgresql/install/data/postmaster.pid	2021-11-30 12:15:17.721257327 +0530
+@@ -1,7 +1,7 @@
+--285193
++-301753
+ /home/pramod/git/postgresql/install/data
+-1638249903
++1638254717
+ 5432
+ 
+ 
+- 14035842    557087
++ 14035842    589855

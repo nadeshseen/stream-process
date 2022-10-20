@@ -1,0 +1,48 @@
+--- home/pramod/git/postgresql/src/backend/tcop/dest.c	2021-11-27 23:07:09.895853462 +0530
++++ postgresql/src/backend/tcop/dest.c	2021-11-30 11:53:44.241852972 +0530
+@@ -87,11 +87,6 @@
+ 	DestSPI
+ };
+ 
+-static const DestReceiver streamProcessor = {
+-	stream_process_tuple, stream_start_tuple, donothingCleanup, donothingCleanup,
+-	DestTupleCustom
+-};
+-
+ /*
+  * Globally available receiver for DestNone.
+  *
+@@ -139,8 +134,7 @@
+ 
+ 		case DestSPI:
+ 			return unconstify(DestReceiver *, &spi_printtupDR);
+-		case DestTupleCustom:
+-			return unconstify(DestReceiver *, &streamProcessor);
++
+ 		case DestTuplestore:
+ 			return CreateTuplestoreDestReceiver();
+ 
+@@ -206,7 +200,6 @@
+ 
+ 		case DestNone:
+ 		case DestDebug:
+-		case DestTupleCustom:
+ 		case DestSPI:
+ 		case DestTuplestore:
+ 		case DestIntoRel:
+@@ -263,7 +256,6 @@
+ 
+ 		case DestNone:
+ 		case DestDebug:
+-		case DestTupleCustom:
+ 		case DestSPI:
+ 		case DestTuplestore:
+ 		case DestIntoRel:
+@@ -310,7 +302,6 @@
+ 
+ 		case DestNone:
+ 		case DestDebug:
+-		case DestTupleCustom:
+ 		case DestSPI:
+ 		case DestTuplestore:
+ 		case DestIntoRel:

@@ -1,0 +1,74 @@
+--- home/pramod/git/postgresql/src/backend/access/common/printtup.c	2021-11-30 12:07:01.961088270 +0530
++++ postgresql/src/backend/access/common/printtup.c	2021-11-30 11:53:43.885853928 +0530
+@@ -37,7 +37,6 @@
+ static void SendRowDescriptionCols_3(StringInfo buf, TupleDesc typeinfo,
+ 									 List *targetlist, int16 *formats);
+ 
+-
+ /* ----------------------------------------------------------------
+  *		printtup / debugtup support
+  * ----------------------------------------------------------------
+@@ -632,7 +631,7 @@
+ 						  &typoutput, &typisvarlena);
+ 
+ 		value = OidOutputFunctionCall(typoutput, attr);
+-//		printf("Value: %s", value);
++
+ 		printatt((unsigned) i + 1, TupleDescAttr(typeinfo, i), value);
+ 	}
+ 	printf("\t----\n");
+@@ -724,54 +723,3 @@
+ 
+ 	return true;
+ }
+-
+-// Modifying here
+-
+-/*
+- * Custom redirected function to compute the aggregates.
+- */
+-bool
+-stream_process_tuple(TupleTableSlot *slot, DestReceiver *self)
+-{
+-	TupleDesc	typeinfo = slot->tts_tupleDescriptor;
+-	int			natts = typeinfo->natts;
+-	int			i;
+-	Datum		attr;
+-	char	   *value;
+-	bool		isnull;
+-	Oid			typoutput;
+-	bool		typisvarlena;
+-	int temp;
+-	for (i = 0; i < natts; ++i)
+-	{
+-		attr = slot_getattr(slot, i + 1, &isnull);
+-		if (isnull)
+-			continue;
+-		getTypeOutputInfo(TupleDescAttr(typeinfo, i)->atttypid,
+-						  &typoutput, &typisvarlena);
+-
+-		value = OidOutputFunctionCall(typoutput, attr);
+-		if(i == 2){
+-			stream_aggregates.stream_sum = atoi(value);
+-
+-		}
+-		if(i==3){
+-			stream_aggregates.stream_max = atoi(value);
+-		}
+-		if(i==4){
+-			stream_aggregates.stream_min = atoi(value);
+-			stream_aggregates.stream_cnt ++;
+-		}
+-	}
+-
+-	return true;
+-}
+-
+-/*
+- * Initialise the variables for our custom aggregator.
+- */
+-void
+-stream_start_tuple(DestReceiver *self, int operation, TupleDesc typeinfo)
+-{
+-}
+-

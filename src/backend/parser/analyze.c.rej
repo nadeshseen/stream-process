@@ -1,0 +1,11 @@
+--- home/pramod/git/postgresql/src/backend/parser/analyze.c	2021-11-27 19:45:25.642692758 +0530
++++ postgresql/src/backend/parser/analyze.c	2021-11-30 11:53:44.065853443 +0530
+@@ -115,8 +115,6 @@
+ 
+ 	query = transformTopLevelStmt(pstate, parseTree);
+ 
+-
+-
+ 	if (post_parse_analyze_hook)
+ 		(*post_parse_analyze_hook) (pstate, query);
+ 

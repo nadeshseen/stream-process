@@ -1,0 +1,9 @@
+Name: libpq
+Description: PostgreSQL libpq library
+Url: https://www.postgresql.org/
+Version: 13.4
+Requires: 
+Requires.private: 
+Cflags: -I/home/pramod/git/postgresql/include
+Libs: -L/home/pramod/git/postgresql/lib -lpq
+Libs.private:  -lm

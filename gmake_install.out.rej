@@ -1,0 +1,797 @@
+--- postgresql/gmake_install.out	2021-11-30 10:53:55.124867000 +0530
++++ home/pramod/git/postgresql/gmake_install.out	2021-11-30 12:13:46.369211075 +0530
+@@ -15,15 +15,15 @@
+ make[1]: Entering directory '/home/pramod/git/postgresql/src'
+ make -C common install
+ make[2]: Entering directory '/home/pramod/git/postgresql/src/common'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib'
+-/usr/bin/install -c -m 644  libpgcommon.a '/home/pramod/git/postgresql/install/lib/libpgcommon.a'
+-/usr/bin/install -c -m 644  libpgcommon_shlib.a '/home/pramod/git/postgresql/install/lib/libpgcommon_shlib.a'
++/bin/mkdir -p '/home/pramod/git/postgresql/lib'
++/usr/bin/install -c -m 644  libpgcommon.a '/home/pramod/git/postgresql/lib/libpgcommon.a'
++/usr/bin/install -c -m 644  libpgcommon_shlib.a '/home/pramod/git/postgresql/lib/libpgcommon_shlib.a'
+ make[2]: Leaving directory '/home/pramod/git/postgresql/src/common'
+ make -C port install
+ make[2]: Entering directory '/home/pramod/git/postgresql/src/port'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib'
+-/usr/bin/install -c -m 644  libpgport.a '/home/pramod/git/postgresql/install/lib/libpgport.a'
+-/usr/bin/install -c -m 644  libpgport_shlib.a '/home/pramod/git/postgresql/install/lib/libpgport_shlib.a'
++/bin/mkdir -p '/home/pramod/git/postgresql/lib'
++/usr/bin/install -c -m 644  libpgport.a '/home/pramod/git/postgresql/lib/libpgport.a'
++/usr/bin/install -c -m 644  libpgport_shlib.a '/home/pramod/git/postgresql/lib/libpgport_shlib.a'
+ make[2]: Leaving directory '/home/pramod/git/postgresql/src/port'
+ make -C timezone install
+ make[2]: Entering directory '/home/pramod/git/postgresql/src/timezone'
+@@ -35,13 +35,13 @@
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/common'
+ make[3]: Nothing to be done for 'all'.
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/common'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/share'
+-./zic -d '/home/pramod/git/postgresql/install/share/timezone'  ./data/tzdata.zi
++/bin/mkdir -p '/home/pramod/git/postgresql/share'
++./zic -d '/home/pramod/git/postgresql/share/timezone'  ./data/tzdata.zi
+ make -C tznames install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/timezone/tznames'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/share/timezonesets'
+-/usr/bin/install -c -m 644 ./Africa.txt ./America.txt ./Antarctica.txt ./Asia.txt ./Atlantic.txt ./Australia.txt ./Etc.txt ./Europe.txt ./Indian.txt ./Pacific.txt '/home/pramod/git/postgresql/install/share/timezonesets'
+-/usr/bin/install -c -m 644 ./Default ./Australia ./India '/home/pramod/git/postgresql/install/share/timezonesets'
++/bin/mkdir -p '/home/pramod/git/postgresql/share/timezonesets'
++/usr/bin/install -c -m 644 ./Africa.txt ./America.txt ./Antarctica.txt ./Asia.txt ./Atlantic.txt ./Australia.txt ./Etc.txt ./Europe.txt ./Indian.txt ./Pacific.txt '/home/pramod/git/postgresql/share/timezonesets'
++/usr/bin/install -c -m 644 ./Default ./Australia ./India '/home/pramod/git/postgresql/share/timezonesets'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/timezone/tznames'
+ make[2]: Leaving directory '/home/pramod/git/postgresql/src/timezone'
+ make -C backend install
+@@ -129,7 +129,11 @@
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/backend/catalog'
+ make -C parser all
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/backend/parser'
+-make[3]: Nothing to be done for 'all'.
++touch gram.h
++gcc -Wall -Wmissing-prototypes -Wpointer-arith -Wdeclaration-after-statement -Werror=vla -Wendif-labels -Wmissing-format-attribute -Wimplicit-fallthrough=3 -Wformat-security -fno-strict-aliasing -fwrapv -fexcess-precision=standard -Wno-format-truncation -Wno-stringop-truncation -g -O0 -I. -I. -I../../../src/include  -D_GNU_SOURCE   -c -o gram.o gram.c
++gcc -Wall -Wmissing-prototypes -Wpointer-arith -Wdeclaration-after-statement -Werror=vla -Wendif-labels -Wmissing-format-attribute -Wimplicit-fallthrough=3 -Wformat-security -fno-strict-aliasing -fwrapv -fexcess-precision=standard -Wno-format-truncation -Wno-stringop-truncation -g -O0 -I. -I. -I../../../src/include  -D_GNU_SOURCE   -c -o parser.o parser.c
++gcc -Wall -Wmissing-prototypes -Wpointer-arith -Wdeclaration-after-statement -Werror=vla -Wendif-labels -Wmissing-format-attribute -Wimplicit-fallthrough=3 -Wformat-security -fno-strict-aliasing -fwrapv -fexcess-precision=standard -Wno-format-truncation -Wno-stringop-truncation -g -O0 -I. -I. -I../../../src/include  -D_GNU_SOURCE   -c -o scan.o scan.c
++touch objfiles.txt
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/backend/parser'
+ make -C commands all
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/backend/commands'
+@@ -326,9 +330,10 @@
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/backend/jit'
+ make[3]: Nothing to be done for 'all'.
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/backend/jit'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/bin' '/home/pramod/git/postgresql/install/share'
+-/usr/bin/install -c  postgres '/home/pramod/git/postgresql/install/bin/postgres'
+-ln -s postgres '/home/pramod/git/postgresql/install/bin/postmaster'
++gcc -Wall -Wmissing-prototypes -Wpointer-arith -Wdeclaration-after-statement -Werror=vla -Wendif-labels -Wmissing-format-attribute -Wimplicit-fallthrough=3 -Wformat-security -fno-strict-aliasing -fwrapv -fexcess-precision=standard -Wno-format-truncation -Wno-stringop-truncation -g -O0 access/brin/brin.o access/brin/brin_inclusion.o access/brin/brin_minmax.o access/brin/brin_pageops.o access/brin/brin_revmap.o access/brin/brin_tuple.o access/brin/brin_validate.o access/brin/brin_xlog.o access/common/attmap.o access/common/bufmask.o access/common/detoast.o access/common/heaptuple.o access/common/indextuple.o access/common/printsimple.o access/common/printtup.o access/common/relation.o access/common/reloptions.o access/common/scankey.o access/common/session.o access/common/toast_internals.o access/common/tupconvert.o access/common/tupdesc.o access/gin/ginarrayproc.o access/gin/ginbtree.o access/gin/ginbulk.o access/gin/gindatapage.o access/gin/ginentrypage.o access/gin/ginfast.o access/gin/ginget.o access/gin/gininsert.o access/gin/ginlogic.o access/gin/ginpostinglist.o access/gin/ginscan.o access/gin/ginutil.o access/gin/ginvacuum.o access/gin/ginvalidate.o access/gin/ginxlog.o access/gist/gist.o access/gist/gistbuild.o access/gist/gistbuildbuffers.o access/gist/gistget.o access/gist/gistproc.o access/gist/gistscan.o access/gist/gistsplit.o access/gist/gistutil.o access/gist/gistvacuum.o access/gist/gistvalidate.o access/gist/gistxlog.o access/hash/hash.o access/hash/hash_xlog.o access/hash/hashfunc.o access/hash/hashinsert.o access/hash/hashovfl.o access/hash/hashpage.o access/hash/hashsearch.o access/hash/hashsort.o access/hash/hashutil.o access/hash/hashvalidate.o access/heap/heapam.o access/heap/heapam_handler.o access/heap/heapam_visibility.o access/heap/heaptoast.o access/heap/hio.o access/heap/pruneheap.o access/heap/rewriteheap.o access/heap/syncscan.o access/heap/vacuumlazy.o access/heap/visibilitymap.o access/index/amapi.o access/index/amvalidate.o access/index/genam.o access/index/indexam.o access/nbtree/nbtcompare.o access/nbtree/nbtdedup.o access/nbtree/nbtinsert.o access/nbtree/nbtpage.o access/nbtree/nbtree.o access/nbtree/nbtsearch.o access/nbtree/nbtsort.o access/nbtree/nbtsplitloc.o access/nbtree/nbtutils.o access/nbtree/nbtvalidate.o access/nbtree/nbtxlog.o access/rmgrdesc/brindesc.o access/rmgrdesc/clogdesc.o access/rmgrdesc/committsdesc.o access/rmgrdesc/dbasedesc.o access/rmgrdesc/genericdesc.o access/rmgrdesc/gindesc.o access/rmgrdesc/gistdesc.o access/rmgrdesc/hashdesc.o access/rmgrdesc/heapdesc.o access/rmgrdesc/logicalmsgdesc.o access/rmgrdesc/mxactdesc.o access/rmgrdesc/nbtdesc.o access/rmgrdesc/relmapdesc.o access/rmgrdesc/replorigindesc.o access/rmgrdesc/seqdesc.o access/rmgrdesc/smgrdesc.o access/rmgrdesc/spgdesc.o access/rmgrdesc/standbydesc.o access/rmgrdesc/tblspcdesc.o access/rmgrdesc/xactdesc.o access/rmgrdesc/xlogdesc.o access/spgist/spgdoinsert.o access/spgist/spginsert.o access/spgist/spgkdtreeproc.o access/spgist/spgproc.o access/spgist/spgquadtreeproc.o access/spgist/spgscan.o access/spgist/spgtextproc.o access/spgist/spgutils.o access/spgist/spgvacuum.o access/spgist/spgvalidate.o access/spgist/spgxlog.o access/table/table.o access/table/tableam.o access/table/tableamapi.o access/table/toast_helper.o access/tablesample/bernoulli.o access/tablesample/system.o access/tablesample/tablesample.o access/transam/clog.o access/transam/commit_ts.o access/transam/generic_xlog.o access/transam/multixact.o access/transam/parallel.o access/transam/rmgr.o access/transam/slru.o access/transam/subtrans.o access/transam/timeline.o access/transam/transam.o access/transam/twophase.o access/transam/twophase_rmgr.o access/transam/varsup.o access/transam/xact.o access/transam/xlog.o access/transam/xlogarchive.o access/transam/xlogfuncs.o access/transam/xloginsert.o access/transam/xlogreader.o access/transam/xlogutils.o bootstrap/bootparse.o bootstrap/bootstrap.o catalog/aclchk.o catalog/catalog.o catalog/dependency.o catalog/heap.o catalog/index.o catalog/indexing.o catalog/namespace.o catalog/objectaccess.o catalog/objectaddress.o catalog/partition.o catalog/pg_aggregate.o catalog/pg_cast.o catalog/pg_collation.o catalog/pg_constraint.o catalog/pg_conversion.o catalog/pg_db_role_setting.o catalog/pg_depend.o catalog/pg_enum.o catalog/pg_inherits.o catalog/pg_largeobject.o catalog/pg_namespace.o catalog/pg_operator.o catalog/pg_proc.o catalog/pg_publication.o catalog/pg_range.o catalog/pg_shdepend.o catalog/pg_subscription.o catalog/pg_type.o catalog/storage.o catalog/toasting.o parser/analyze.o parser/gram.o parser/parse_agg.o parser/parse_clause.o parser/parse_coerce.o parser/parse_collate.o parser/parse_cte.o parser/parse_enr.o parser/parse_expr.o parser/parse_func.o parser/parse_node.o parser/parse_oper.o parser/parse_param.o parser/parse_relation.o parser/parse_target.o parser/parse_type.o parser/parse_utilcmd.o parser/parser.o parser/scan.o parser/scansup.o commands/aggregatecmds.o commands/alter.o commands/amcmds.o commands/analyze.o commands/async.o commands/cluster.o commands/collationcmds.o commands/comment.o commands/constraint.o commands/conversioncmds.o commands/copy.o commands/createas.o commands/dbcommands.o commands/define.o commands/discard.o commands/dropcmds.o commands/event_trigger.o commands/explain.o commands/extension.o commands/foreigncmds.o commands/functioncmds.o commands/indexcmds.o commands/lockcmds.o commands/matview.o commands/opclasscmds.o commands/operatorcmds.o commands/policy.o commands/portalcmds.o commands/prepare.o commands/proclang.o commands/publicationcmds.o commands/schemacmds.o commands/seclabel.o commands/sequence.o commands/statscmds.o commands/subscriptioncmds.o commands/tablecmds.o commands/tablespace.o commands/trigger.o commands/tsearchcmds.o commands/typecmds.o commands/user.o commands/vacuum.o commands/variable.o commands/view.o executor/execAmi.o executor/execCurrent.o executor/execExpr.o executor/execExprInterp.o executor/execGrouping.o executor/execIndexing.o executor/execJunk.o executor/execMain.o executor/execParallel.o executor/execPartition.o executor/execProcnode.o executor/execReplication.o executor/execSRF.o executor/execScan.o executor/execTuples.o executor/execUtils.o executor/functions.o executor/instrument.o executor/nodeAgg.o executor/nodeAppend.o executor/nodeBitmapAnd.o executor/nodeBitmapHeapscan.o executor/nodeBitmapIndexscan.o executor/nodeBitmapOr.o executor/nodeCtescan.o executor/nodeCustom.o executor/nodeForeignscan.o executor/nodeFunctionscan.o executor/nodeGather.o executor/nodeGatherMerge.o executor/nodeGroup.o executor/nodeHash.o executor/nodeHashjoin.o executor/nodeIncrementalSort.o executor/nodeIndexonlyscan.o executor/nodeIndexscan.o executor/nodeLimit.o executor/nodeLockRows.o executor/nodeMaterial.o executor/nodeMergeAppend.o executor/nodeMergejoin.o executor/nodeModifyTable.o executor/nodeNamedtuplestorescan.o executor/nodeNestloop.o executor/nodeProjectSet.o executor/nodeRecursiveunion.o executor/nodeResult.o executor/nodeSamplescan.o executor/nodeSeqscan.o executor/nodeSetOp.o executor/nodeSort.o executor/nodeSubplan.o executor/nodeSubqueryscan.o executor/nodeTableFuncscan.o executor/nodeTidscan.o executor/nodeUnique.o executor/nodeValuesscan.o executor/nodeWindowAgg.o executor/nodeWorktablescan.o executor/spi.o executor/tqueue.o executor/tstoreReceiver.o foreign/foreign.o lib/binaryheap.o lib/bipartite_match.o lib/bloomfilter.o lib/dshash.o lib/hyperloglog.o lib/ilist.o lib/integerset.o lib/knapsack.o lib/pairingheap.o lib/rbtree.o libpq/auth-scram.o libpq/auth.o libpq/be-fsstubs.o libpq/be-secure-common.o libpq/be-secure.o libpq/crypt.o libpq/hba.o libpq/ifaddr.o libpq/pqcomm.o libpq/pqformat.o libpq/pqmq.o libpq/pqsignal.o main/main.o nodes/bitmapset.o nodes/copyfuncs.o nodes/equalfuncs.o nodes/extensible.o nodes/list.o nodes/makefuncs.o nodes/nodeFuncs.o nodes/nodes.o nodes/outfuncs.o nodes/params.o nodes/print.o nodes/read.o nodes/readfuncs.o nodes/tidbitmap.o nodes/value.o optimizer/geqo/geqo_copy.o optimizer/geqo/geqo_cx.o optimizer/geqo/geqo_erx.o optimizer/geqo/geqo_eval.o optimizer/geqo/geqo_main.o optimizer/geqo/geqo_misc.o optimizer/geqo/geqo_mutation.o optimizer/geqo/geqo_ox1.o optimizer/geqo/geqo_ox2.o optimizer/geqo/geqo_pmx.o optimizer/geqo/geqo_pool.o optimizer/geqo/geqo_px.o optimizer/geqo/geqo_random.o optimizer/geqo/geqo_recombination.o optimizer/geqo/geqo_selection.o optimizer/path/allpaths.o optimizer/path/clausesel.o optimizer/path/costsize.o optimizer/path/equivclass.o optimizer/path/indxpath.o optimizer/path/joinpath.o optimizer/path/joinrels.o optimizer/path/pathkeys.o optimizer/path/tidpath.o optimizer/plan/analyzejoins.o optimizer/plan/createplan.o optimizer/plan/initsplan.o optimizer/plan/planagg.o optimizer/plan/planmain.o optimizer/plan/planner.o optimizer/plan/setrefs.o optimizer/plan/subselect.o optimizer/prep/prepjointree.o optimizer/prep/prepqual.o optimizer/prep/preptlist.o optimizer/prep/prepunion.o optimizer/util/appendinfo.o optimizer/util/clauses.o optimizer/util/inherit.o optimizer/util/joininfo.o optimizer/util/orclauses.o optimizer/util/paramassign.o optimizer/util/pathnode.o optimizer/util/placeholder.o optimizer/util/plancat.o optimizer/util/predtest.o optimizer/util/relnode.o optimizer/util/restrictinfo.o optimizer/util/tlist.o optimizer/util/var.o partitioning/partbounds.o partitioning/partdesc.o partitioning/partprune.o port/atomics.o port/pg_sema.o port/pg_shmem.o postmaster/autovacuum.o postmaster/bgworker.o postmaster/bgwriter.o postmaster/checkpointer.o postmaster/fork_process.o postmaster/interrupt.o postmaster/pgarch.o postmaster/pgstat.o postmaster/postmaster.o postmaster/startup.o postmaster/syslogger.o postmaster/walwriter.o regex/regcomp.o regex/regerror.o regex/regexec.o regex/regexport.o regex/regfree.o regex/regprefix.o replication/logical/decode.o replication/logical/launcher.o replication/logical/logical.o replication/logical/logicalfuncs.o replication/logical/message.o replication/logical/origin.o replication/logical/proto.o replication/logical/relation.o replication/logical/reorderbuffer.o replication/logical/snapbuild.o replication/logical/tablesync.o replication/logical/worker.o replication/backup_manifest.o replication/basebackup.o replication/repl_gram.o replication/slot.o replication/slotfuncs.o replication/syncrep.o replication/syncrep_gram.o replication/walreceiver.o replication/walreceiverfuncs.o replication/walsender.o rewrite/rewriteDefine.o rewrite/rewriteHandler.o rewrite/rewriteManip.o rewrite/rewriteRemove.o rewrite/rewriteSupport.o rewrite/rowsecurity.o statistics/dependencies.o statistics/extended_stats.o statistics/mcv.o statistics/mvdistinct.o storage/buffer/buf_init.o storage/buffer/buf_table.o storage/buffer/bufmgr.o storage/buffer/freelist.o storage/buffer/localbuf.o storage/file/buffile.o storage/file/copydir.o storage/file/fd.o storage/file/reinit.o storage/file/sharedfileset.o storage/freespace/freespace.o storage/freespace/fsmpage.o storage/freespace/indexfsm.o storage/ipc/barrier.o storage/ipc/dsm.o storage/ipc/dsm_impl.o storage/ipc/ipc.o storage/ipc/ipci.o storage/ipc/latch.o storage/ipc/pmsignal.o storage/ipc/procarray.o storage/ipc/procsignal.o storage/ipc/shm_mq.o storage/ipc/shm_toc.o storage/ipc/shmem.o storage/ipc/shmqueue.o storage/ipc/signalfuncs.o storage/ipc/sinval.o storage/ipc/sinvaladt.o storage/ipc/standby.o storage/large_object/inv_api.o storage/lmgr/condition_variable.o storage/lmgr/deadlock.o storage/lmgr/lmgr.o storage/lmgr/lock.o storage/lmgr/lwlock.o storage/lmgr/lwlocknames.o storage/lmgr/predicate.o storage/lmgr/proc.o storage/lmgr/s_lock.o storage/lmgr/spin.o storage/page/bufpage.o storage/page/checksum.o storage/page/itemptr.o storage/smgr/md.o storage/smgr/smgr.o storage/sync/sync.o tcop/cmdtag.o tcop/dest.o tcop/fastpath.o tcop/postgres.o tcop/pquery.o tcop/utility.o tsearch/dict.o tsearch/dict_ispell.o tsearch/dict_simple.o tsearch/dict_synonym.o tsearch/dict_thesaurus.o tsearch/regis.o tsearch/spell.o tsearch/to_tsany.o tsearch/ts_locale.o tsearch/ts_parse.o tsearch/ts_selfuncs.o tsearch/ts_typanalyze.o tsearch/ts_utils.o tsearch/wparser.o tsearch/wparser_def.o utils/adt/acl.o utils/adt/amutils.o utils/adt/array_expanded.o utils/adt/array_selfuncs.o utils/adt/array_typanalyze.o utils/adt/array_userfuncs.o utils/adt/arrayfuncs.o utils/adt/arrayutils.o utils/adt/ascii.o utils/adt/bool.o utils/adt/cash.o utils/adt/char.o utils/adt/cryptohashes.o utils/adt/date.o utils/adt/datetime.o utils/adt/datum.o utils/adt/dbsize.o utils/adt/domains.o utils/adt/encode.o utils/adt/enum.o utils/adt/expandeddatum.o utils/adt/expandedrecord.o utils/adt/float.o utils/adt/format_type.o utils/adt/formatting.o utils/adt/genfile.o utils/adt/geo_ops.o utils/adt/geo_selfuncs.o utils/adt/geo_spgist.o utils/adt/inet_cidr_ntop.o utils/adt/inet_net_pton.o utils/adt/int.o utils/adt/int8.o utils/adt/json.o utils/adt/jsonb.o utils/adt/jsonb_gin.o utils/adt/jsonb_op.o utils/adt/jsonb_util.o utils/adt/jsonfuncs.o utils/adt/jsonpath.o utils/adt/jsonpath_exec.o utils/adt/jsonpath_gram.o utils/adt/like.o utils/adt/like_support.o utils/adt/lockfuncs.o utils/adt/mac.o utils/adt/mac8.o utils/adt/misc.o utils/adt/name.o utils/adt/network.o utils/adt/network_gist.o utils/adt/network_selfuncs.o utils/adt/network_spgist.o utils/adt/numeric.o utils/adt/numutils.o utils/adt/oid.o utils/adt/oracle_compat.o utils/adt/orderedsetaggs.o utils/adt/partitionfuncs.o utils/adt/pg_locale.o utils/adt/pg_lsn.o utils/adt/pg_upgrade_support.o utils/adt/pgstatfuncs.o utils/adt/pseudotypes.o utils/adt/quote.o utils/adt/rangetypes.o utils/adt/rangetypes_gist.o utils/adt/rangetypes_selfuncs.o utils/adt/rangetypes_spgist.o utils/adt/rangetypes_typanalyze.o utils/adt/regexp.o utils/adt/regproc.o utils/adt/ri_triggers.o utils/adt/rowtypes.o utils/adt/ruleutils.o utils/adt/selfuncs.o utils/adt/tid.o utils/adt/timestamp.o utils/adt/trigfuncs.o utils/adt/tsginidx.o utils/adt/tsgistidx.o utils/adt/tsquery.o utils/adt/tsquery_cleanup.o utils/adt/tsquery_gist.o utils/adt/tsquery_op.o utils/adt/tsquery_rewrite.o utils/adt/tsquery_util.o utils/adt/tsrank.o utils/adt/tsvector.o utils/adt/tsvector_op.o utils/adt/tsvector_parser.o utils/adt/uuid.o utils/adt/varbit.o utils/adt/varchar.o utils/adt/varlena.o utils/adt/version.o utils/adt/windowfuncs.o utils/adt/xid.o utils/adt/xid8funcs.o utils/adt/xml.o utils/cache/attoptcache.o utils/cache/catcache.o utils/cache/evtcache.o utils/cache/inval.o utils/cache/lsyscache.o utils/cache/partcache.o utils/cache/plancache.o utils/cache/relcache.o utils/cache/relfilenodemap.o utils/cache/relmapper.o utils/cache/spccache.o utils/cache/syscache.o utils/cache/ts_cache.o utils/cache/typcache.o utils/error/assert.o utils/error/elog.o utils/fmgr/dfmgr.o utils/fmgr/fmgr.o utils/fmgr/funcapi.o utils/hash/dynahash.o utils/hash/pg_crc.o utils/init/globals.o utils/init/miscinit.o utils/init/postinit.o utils/mb/conv.o utils/mb/mbutils.o utils/mb/stringinfo_mb.o utils/mb/wstrcmp.o utils/mb/wstrncmp.o utils/misc/guc.o utils/misc/help_config.o utils/misc/pg_config.o utils/misc/pg_controldata.o utils/misc/pg_rusage.o utils/misc/ps_status.o utils/misc/queryenvironment.o utils/misc/rls.o utils/misc/sampling.o utils/misc/superuser.o utils/misc/timeout.o utils/misc/tzparser.o utils/mmgr/aset.o utils/mmgr/dsa.o utils/mmgr/freepage.o utils/mmgr/generation.o utils/mmgr/mcxt.o utils/mmgr/memdebug.o utils/mmgr/portalmem.o utils/mmgr/slab.o utils/resowner/resowner.o utils/sort/logtape.o utils/sort/sharedtuplestore.o utils/sort/sortsupport.o utils/sort/tuplesort.o utils/sort/tuplestore.o utils/time/combocid.o utils/time/snapmgr.o utils/fmgrtab.o ../../src/timezone/localtime.o ../../src/timezone/pgtz.o ../../src/timezone/strftime.o jit/jit.o ../../src/common/libpgcommon_srv.a ../../src/port/libpgport_srv.a -L../../src/port -L../../src/common   -Wl,--as-needed -Wl,-rpath,'/home/pramod/git/postgresql/lib',--enable-new-dtags  -Wl,-E -lpthread -lrt -ldl -lm -o postgres
++/bin/mkdir -p '/home/pramod/git/postgresql/bin' '/home/pramod/git/postgresql/share'
++/usr/bin/install -c  postgres '/home/pramod/git/postgresql/bin/postgres'
++ln -s postgres '/home/pramod/git/postgresql/bin/postmaster'
+ make -C access install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/backend/access'
+ make -C brin install
+@@ -586,13 +591,13 @@
+ make[4]: Entering directory '/home/pramod/git/postgresql/src/common'
+ make[4]: Nothing to be done for 'all'.
+ make[4]: Leaving directory '/home/pramod/git/postgresql/src/common'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/share'
+-./zic -d '/home/pramod/git/postgresql/install/share/timezone'  ./data/tzdata.zi
++/bin/mkdir -p '/home/pramod/git/postgresql/share'
++./zic -d '/home/pramod/git/postgresql/share/timezone'  ./data/tzdata.zi
+ make -C tznames install
+ make[4]: Entering directory '/home/pramod/git/postgresql/src/timezone/tznames'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/share/timezonesets'
+-/usr/bin/install -c -m 644 ./Africa.txt ./America.txt ./Antarctica.txt ./Asia.txt ./Atlantic.txt ./Australia.txt ./Etc.txt ./Europe.txt ./Indian.txt ./Pacific.txt '/home/pramod/git/postgresql/install/share/timezonesets'
+-/usr/bin/install -c -m 644 ./Default ./Australia ./India '/home/pramod/git/postgresql/install/share/timezonesets'
++/bin/mkdir -p '/home/pramod/git/postgresql/share/timezonesets'
++/usr/bin/install -c -m 644 ./Africa.txt ./America.txt ./Antarctica.txt ./Asia.txt ./Atlantic.txt ./Australia.txt ./Etc.txt ./Europe.txt ./Indian.txt ./Pacific.txt '/home/pramod/git/postgresql/share/timezonesets'
++/usr/bin/install -c -m 644 ./Default ./Australia ./India '/home/pramod/git/postgresql/share/timezonesets'
+ make[4]: Leaving directory '/home/pramod/git/postgresql/src/timezone/tznames'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/timezone'
+ make -C jit install
+@@ -601,183 +606,183 @@
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/backend/jit'
+ make -C catalog install-data
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/backend/catalog'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/share'
+-/usr/bin/install -c -m 644 `for f in ./postgres.bki; do test -r $f && echo $f && break; done` '/home/pramod/git/postgresql/install/share/postgres.bki'
+-/usr/bin/install -c -m 644 ./system_views.sql '/home/pramod/git/postgresql/install/share/system_views.sql'
+-/usr/bin/install -c -m 644 ./information_schema.sql '/home/pramod/git/postgresql/install/share/information_schema.sql'
+-/usr/bin/install -c -m 644 ./sql_features.txt '/home/pramod/git/postgresql/install/share/sql_features.txt'
++/bin/mkdir -p '/home/pramod/git/postgresql/share'
++/usr/bin/install -c -m 644 `for f in ./postgres.bki; do test -r $f && echo $f && break; done` '/home/pramod/git/postgresql/share/postgres.bki'
++/usr/bin/install -c -m 644 ./system_views.sql '/home/pramod/git/postgresql/share/system_views.sql'
++/usr/bin/install -c -m 644 ./information_schema.sql '/home/pramod/git/postgresql/share/information_schema.sql'
++/usr/bin/install -c -m 644 ./sql_features.txt '/home/pramod/git/postgresql/share/sql_features.txt'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/backend/catalog'
+ make -C tsearch install-data
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/backend/tsearch'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/share' '/home/pramod/git/postgresql/install/share/tsearch_data'
+-/usr/bin/install -c -m 644 ./dicts/synonym_sample.syn ./dicts/thesaurus_sample.ths ./dicts/hunspell_sample.affix ./dicts/ispell_sample.affix ./dicts/ispell_sample.dict ./dicts/hunspell_sample_long.affix ./dicts/hunspell_sample_long.dict ./dicts/hunspell_sample_num.affix ./dicts/hunspell_sample_num.dict '/home/pramod/git/postgresql/install/share/tsearch_data/'
++/bin/mkdir -p '/home/pramod/git/postgresql/share' '/home/pramod/git/postgresql/share/tsearch_data'
++/usr/bin/install -c -m 644 ./dicts/synonym_sample.syn ./dicts/thesaurus_sample.ths ./dicts/hunspell_sample.affix ./dicts/ispell_sample.affix ./dicts/ispell_sample.dict ./dicts/hunspell_sample_long.affix ./dicts/hunspell_sample_long.dict ./dicts/hunspell_sample_num.affix ./dicts/hunspell_sample_num.dict '/home/pramod/git/postgresql/share/tsearch_data/'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/backend/tsearch'
+ make -C utils install-data
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/backend/utils'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/share'
+-/usr/bin/install -c -m 644 ./errcodes.txt '/home/pramod/git/postgresql/install/share/errcodes.txt'
++/bin/mkdir -p '/home/pramod/git/postgresql/share'
++/usr/bin/install -c -m 644 ./errcodes.txt '/home/pramod/git/postgresql/share/errcodes.txt'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/backend/utils'
+-/usr/bin/install -c -m 644 ./libpq/pg_hba.conf.sample '/home/pramod/git/postgresql/install/share/pg_hba.conf.sample'
+-/usr/bin/install -c -m 644 ./libpq/pg_ident.conf.sample '/home/pramod/git/postgresql/install/share/pg_ident.conf.sample'
+-/usr/bin/install -c -m 644 ./utils/misc/postgresql.conf.sample '/home/pramod/git/postgresql/install/share/postgresql.conf.sample'
++/usr/bin/install -c -m 644 ./libpq/pg_hba.conf.sample '/home/pramod/git/postgresql/share/pg_hba.conf.sample'
++/usr/bin/install -c -m 644 ./libpq/pg_ident.conf.sample '/home/pramod/git/postgresql/share/pg_ident.conf.sample'
++/usr/bin/install -c -m 644 ./utils/misc/postgresql.conf.sample '/home/pramod/git/postgresql/share/postgresql.conf.sample'
+ make[2]: Leaving directory '/home/pramod/git/postgresql/src/backend'
+ make -C backend/utils/mb/conversion_procs install
+ make[2]: Entering directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs'
+ make -C cyrillic_and_mic install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/cyrillic_and_mic'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib'
+-/usr/bin/install -c -m 755  cyrillic_and_mic.so '/home/pramod/git/postgresql/install/lib/cyrillic_and_mic.so'
++/bin/mkdir -p '/home/pramod/git/postgresql/lib'
++/usr/bin/install -c -m 755  cyrillic_and_mic.so '/home/pramod/git/postgresql/lib/cyrillic_and_mic.so'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/cyrillic_and_mic'
+ make -C euc_cn_and_mic install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/euc_cn_and_mic'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib'
+-/usr/bin/install -c -m 755  euc_cn_and_mic.so '/home/pramod/git/postgresql/install/lib/euc_cn_and_mic.so'
++/bin/mkdir -p '/home/pramod/git/postgresql/lib'
++/usr/bin/install -c -m 755  euc_cn_and_mic.so '/home/pramod/git/postgresql/lib/euc_cn_and_mic.so'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/euc_cn_and_mic'
+ make -C euc_jp_and_sjis install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/euc_jp_and_sjis'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib'
+-/usr/bin/install -c -m 755  euc_jp_and_sjis.so '/home/pramod/git/postgresql/install/lib/euc_jp_and_sjis.so'
++/bin/mkdir -p '/home/pramod/git/postgresql/lib'
++/usr/bin/install -c -m 755  euc_jp_and_sjis.so '/home/pramod/git/postgresql/lib/euc_jp_and_sjis.so'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/euc_jp_and_sjis'
+ make -C euc_kr_and_mic install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/euc_kr_and_mic'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib'
+-/usr/bin/install -c -m 755  euc_kr_and_mic.so '/home/pramod/git/postgresql/install/lib/euc_kr_and_mic.so'
++/bin/mkdir -p '/home/pramod/git/postgresql/lib'
++/usr/bin/install -c -m 755  euc_kr_and_mic.so '/home/pramod/git/postgresql/lib/euc_kr_and_mic.so'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/euc_kr_and_mic'
+ make -C euc_tw_and_big5 install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/euc_tw_and_big5'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib'
+-/usr/bin/install -c -m 755  euc_tw_and_big5.so '/home/pramod/git/postgresql/install/lib/euc_tw_and_big5.so'
++/bin/mkdir -p '/home/pramod/git/postgresql/lib'
++/usr/bin/install -c -m 755  euc_tw_and_big5.so '/home/pramod/git/postgresql/lib/euc_tw_and_big5.so'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/euc_tw_and_big5'
+ make -C latin2_and_win1250 install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/latin2_and_win1250'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib'
+-/usr/bin/install -c -m 755  latin2_and_win1250.so '/home/pramod/git/postgresql/install/lib/latin2_and_win1250.so'
++/bin/mkdir -p '/home/pramod/git/postgresql/lib'
++/usr/bin/install -c -m 755  latin2_and_win1250.so '/home/pramod/git/postgresql/lib/latin2_and_win1250.so'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/latin2_and_win1250'
+ make -C latin_and_mic install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/latin_and_mic'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib'
+-/usr/bin/install -c -m 755  latin_and_mic.so '/home/pramod/git/postgresql/install/lib/latin_and_mic.so'
++/bin/mkdir -p '/home/pramod/git/postgresql/lib'
++/usr/bin/install -c -m 755  latin_and_mic.so '/home/pramod/git/postgresql/lib/latin_and_mic.so'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/latin_and_mic'
+ make -C utf8_and_big5 install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/utf8_and_big5'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib'
+-/usr/bin/install -c -m 755  utf8_and_big5.so '/home/pramod/git/postgresql/install/lib/utf8_and_big5.so'
++/bin/mkdir -p '/home/pramod/git/postgresql/lib'
++/usr/bin/install -c -m 755  utf8_and_big5.so '/home/pramod/git/postgresql/lib/utf8_and_big5.so'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/utf8_and_big5'
+ make -C utf8_and_cyrillic install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/utf8_and_cyrillic'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib'
+-/usr/bin/install -c -m 755  utf8_and_cyrillic.so '/home/pramod/git/postgresql/install/lib/utf8_and_cyrillic.so'
++/bin/mkdir -p '/home/pramod/git/postgresql/lib'
++/usr/bin/install -c -m 755  utf8_and_cyrillic.so '/home/pramod/git/postgresql/lib/utf8_and_cyrillic.so'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/utf8_and_cyrillic'
+ make -C utf8_and_euc_cn install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/utf8_and_euc_cn'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib'
+-/usr/bin/install -c -m 755  utf8_and_euc_cn.so '/home/pramod/git/postgresql/install/lib/utf8_and_euc_cn.so'
++/bin/mkdir -p '/home/pramod/git/postgresql/lib'
++/usr/bin/install -c -m 755  utf8_and_euc_cn.so '/home/pramod/git/postgresql/lib/utf8_and_euc_cn.so'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/utf8_and_euc_cn'
+ make -C utf8_and_euc_jp install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/utf8_and_euc_jp'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib'
+-/usr/bin/install -c -m 755  utf8_and_euc_jp.so '/home/pramod/git/postgresql/install/lib/utf8_and_euc_jp.so'
++/bin/mkdir -p '/home/pramod/git/postgresql/lib'
++/usr/bin/install -c -m 755  utf8_and_euc_jp.so '/home/pramod/git/postgresql/lib/utf8_and_euc_jp.so'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/utf8_and_euc_jp'
+ make -C utf8_and_euc_kr install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/utf8_and_euc_kr'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib'
+-/usr/bin/install -c -m 755  utf8_and_euc_kr.so '/home/pramod/git/postgresql/install/lib/utf8_and_euc_kr.so'
++/bin/mkdir -p '/home/pramod/git/postgresql/lib'
++/usr/bin/install -c -m 755  utf8_and_euc_kr.so '/home/pramod/git/postgresql/lib/utf8_and_euc_kr.so'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/utf8_and_euc_kr'
+ make -C utf8_and_euc_tw install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/utf8_and_euc_tw'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib'
+-/usr/bin/install -c -m 755  utf8_and_euc_tw.so '/home/pramod/git/postgresql/install/lib/utf8_and_euc_tw.so'
++/bin/mkdir -p '/home/pramod/git/postgresql/lib'
++/usr/bin/install -c -m 755  utf8_and_euc_tw.so '/home/pramod/git/postgresql/lib/utf8_and_euc_tw.so'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/utf8_and_euc_tw'
+ make -C utf8_and_gb18030 install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/utf8_and_gb18030'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib'
+-/usr/bin/install -c -m 755  utf8_and_gb18030.so '/home/pramod/git/postgresql/install/lib/utf8_and_gb18030.so'
++/bin/mkdir -p '/home/pramod/git/postgresql/lib'
++/usr/bin/install -c -m 755  utf8_and_gb18030.so '/home/pramod/git/postgresql/lib/utf8_and_gb18030.so'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/utf8_and_gb18030'
+ make -C utf8_and_gbk install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/utf8_and_gbk'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib'
+-/usr/bin/install -c -m 755  utf8_and_gbk.so '/home/pramod/git/postgresql/install/lib/utf8_and_gbk.so'
++/bin/mkdir -p '/home/pramod/git/postgresql/lib'
++/usr/bin/install -c -m 755  utf8_and_gbk.so '/home/pramod/git/postgresql/lib/utf8_and_gbk.so'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/utf8_and_gbk'
+ make -C utf8_and_iso8859 install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/utf8_and_iso8859'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib'
+-/usr/bin/install -c -m 755  utf8_and_iso8859.so '/home/pramod/git/postgresql/install/lib/utf8_and_iso8859.so'
++/bin/mkdir -p '/home/pramod/git/postgresql/lib'
++/usr/bin/install -c -m 755  utf8_and_iso8859.so '/home/pramod/git/postgresql/lib/utf8_and_iso8859.so'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/utf8_and_iso8859'
+ make -C utf8_and_iso8859_1 install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/utf8_and_iso8859_1'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib'
+-/usr/bin/install -c -m 755  utf8_and_iso8859_1.so '/home/pramod/git/postgresql/install/lib/utf8_and_iso8859_1.so'
++/bin/mkdir -p '/home/pramod/git/postgresql/lib'
++/usr/bin/install -c -m 755  utf8_and_iso8859_1.so '/home/pramod/git/postgresql/lib/utf8_and_iso8859_1.so'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/utf8_and_iso8859_1'
+ make -C utf8_and_johab install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/utf8_and_johab'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib'
+-/usr/bin/install -c -m 755  utf8_and_johab.so '/home/pramod/git/postgresql/install/lib/utf8_and_johab.so'
++/bin/mkdir -p '/home/pramod/git/postgresql/lib'
++/usr/bin/install -c -m 755  utf8_and_johab.so '/home/pramod/git/postgresql/lib/utf8_and_johab.so'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/utf8_and_johab'
+ make -C utf8_and_sjis install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/utf8_and_sjis'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib'
+-/usr/bin/install -c -m 755  utf8_and_sjis.so '/home/pramod/git/postgresql/install/lib/utf8_and_sjis.so'
++/bin/mkdir -p '/home/pramod/git/postgresql/lib'
++/usr/bin/install -c -m 755  utf8_and_sjis.so '/home/pramod/git/postgresql/lib/utf8_and_sjis.so'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/utf8_and_sjis'
+ make -C utf8_and_win install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/utf8_and_win'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib'
+-/usr/bin/install -c -m 755  utf8_and_win.so '/home/pramod/git/postgresql/install/lib/utf8_and_win.so'
++/bin/mkdir -p '/home/pramod/git/postgresql/lib'
++/usr/bin/install -c -m 755  utf8_and_win.so '/home/pramod/git/postgresql/lib/utf8_and_win.so'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/utf8_and_win'
+ make -C utf8_and_uhc install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/utf8_and_uhc'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib'
+-/usr/bin/install -c -m 755  utf8_and_uhc.so '/home/pramod/git/postgresql/install/lib/utf8_and_uhc.so'
++/bin/mkdir -p '/home/pramod/git/postgresql/lib'
++/usr/bin/install -c -m 755  utf8_and_uhc.so '/home/pramod/git/postgresql/lib/utf8_and_uhc.so'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/utf8_and_uhc'
+ make -C utf8_and_euc2004 install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/utf8_and_euc2004'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib'
+-/usr/bin/install -c -m 755  utf8_and_euc2004.so '/home/pramod/git/postgresql/install/lib/utf8_and_euc2004.so'
++/bin/mkdir -p '/home/pramod/git/postgresql/lib'
++/usr/bin/install -c -m 755  utf8_and_euc2004.so '/home/pramod/git/postgresql/lib/utf8_and_euc2004.so'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/utf8_and_euc2004'
+ make -C utf8_and_sjis2004 install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/utf8_and_sjis2004'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib'
+-/usr/bin/install -c -m 755  utf8_and_sjis2004.so '/home/pramod/git/postgresql/install/lib/utf8_and_sjis2004.so'
++/bin/mkdir -p '/home/pramod/git/postgresql/lib'
++/usr/bin/install -c -m 755  utf8_and_sjis2004.so '/home/pramod/git/postgresql/lib/utf8_and_sjis2004.so'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/utf8_and_sjis2004'
+ make -C euc2004_sjis2004 install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/euc2004_sjis2004'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib'
+-/usr/bin/install -c -m 755  euc2004_sjis2004.so '/home/pramod/git/postgresql/install/lib/euc2004_sjis2004.so'
++/bin/mkdir -p '/home/pramod/git/postgresql/lib'
++/usr/bin/install -c -m 755  euc2004_sjis2004.so '/home/pramod/git/postgresql/lib/euc2004_sjis2004.so'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs/euc2004_sjis2004'
+ make[2]: Leaving directory '/home/pramod/git/postgresql/src/backend/utils/mb/conversion_procs'
+ make -C backend/snowball install
+ make[2]: Entering directory '/home/pramod/git/postgresql/src/backend/snowball'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/share' '/home/pramod/git/postgresql/install/share/tsearch_data'
+-/usr/bin/install -c -m 755  dict_snowball.so '/home/pramod/git/postgresql/install/lib/dict_snowball.so'
+-/usr/bin/install -c -m 644 snowball_create.sql '/home/pramod/git/postgresql/install/share'
++/bin/mkdir -p '/home/pramod/git/postgresql/lib'
++/bin/mkdir -p '/home/pramod/git/postgresql/share' '/home/pramod/git/postgresql/share/tsearch_data'
++/usr/bin/install -c -m 755  dict_snowball.so '/home/pramod/git/postgresql/lib/dict_snowball.so'
++/usr/bin/install -c -m 644 snowball_create.sql '/home/pramod/git/postgresql/share'
+ make[2]: Leaving directory '/home/pramod/git/postgresql/src/backend/snowball'
+ make -C include install
+ make[2]: Entering directory '/home/pramod/git/postgresql/src/include'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/include/libpq' '/home/pramod/git/postgresql/install/include/internal/libpq'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/include/server'/access '/home/pramod/git/postgresql/install/include/server'/bootstrap '/home/pramod/git/postgresql/install/include/server'/catalog '/home/pramod/git/postgresql/install/include/server'/commands '/home/pramod/git/postgresql/install/include/server'/common '/home/pramod/git/postgresql/install/include/server'/datatype '/home/pramod/git/postgresql/install/include/server'/executor '/home/pramod/git/postgresql/install/include/server'/fe_utils '/home/pramod/git/postgresql/install/include/server'/foreign '/home/pramod/git/postgresql/install/include/server'/jit '/home/pramod/git/postgresql/install/include/server'/lib '/home/pramod/git/postgresql/install/include/server'/libpq '/home/pramod/git/postgresql/install/include/server'/mb '/home/pramod/git/postgresql/install/include/server'/nodes '/home/pramod/git/postgresql/install/include/server'/optimizer '/home/pramod/git/postgresql/install/include/server'/parser '/home/pramod/git/postgresql/install/include/server'/partitioning '/home/pramod/git/postgresql/install/include/server'/postmaster '/home/pramod/git/postgresql/install/include/server'/regex '/home/pramod/git/postgresql/install/include/server'/replication '/home/pramod/git/postgresql/install/include/server'/rewrite '/home/pramod/git/postgresql/install/include/server'/statistics '/home/pramod/git/postgresql/install/include/server'/storage '/home/pramod/git/postgresql/install/include/server'/tcop '/home/pramod/git/postgresql/install/include/server'/snowball '/home/pramod/git/postgresql/install/include/server'/snowball/libstemmer '/home/pramod/git/postgresql/install/include/server'/tsearch '/home/pramod/git/postgresql/install/include/server'/tsearch/dicts '/home/pramod/git/postgresql/install/include/server'/utils '/home/pramod/git/postgresql/install/include/server'/port '/home/pramod/git/postgresql/install/include/server'/port/atomics '/home/pramod/git/postgresql/install/include/server'/port/win32 '/home/pramod/git/postgresql/install/include/server'/port/win32_msvc '/home/pramod/git/postgresql/install/include/server'/port/win32_msvc/sys '/home/pramod/git/postgresql/install/include/server'/port/win32/arpa '/home/pramod/git/postgresql/install/include/server'/port/win32/netinet '/home/pramod/git/postgresql/install/include/server'/port/win32/sys '/home/pramod/git/postgresql/install/include/server'/portability
+-/usr/bin/install -c -m 644 ./postgres_ext.h   '/home/pramod/git/postgresql/install/include'
+-/usr/bin/install -c -m 644 ./libpq/libpq-fs.h '/home/pramod/git/postgresql/install/include/libpq'
+-/usr/bin/install -c -m 644 pg_config.h     '/home/pramod/git/postgresql/install/include'
+-/usr/bin/install -c -m 644 pg_config_ext.h '/home/pramod/git/postgresql/install/include'
+-/usr/bin/install -c -m 644 pg_config_os.h  '/home/pramod/git/postgresql/install/include'
+-/usr/bin/install -c -m 644 ./pg_config_manual.h '/home/pramod/git/postgresql/install/include'
+-/usr/bin/install -c -m 644 ./c.h            '/home/pramod/git/postgresql/install/include/internal'
+-/usr/bin/install -c -m 644 ./port.h         '/home/pramod/git/postgresql/install/include/internal'
+-/usr/bin/install -c -m 644 ./postgres_fe.h  '/home/pramod/git/postgresql/install/include/internal'
+-/usr/bin/install -c -m 644 ./libpq/pqcomm.h '/home/pramod/git/postgresql/install/include/internal/libpq'
+-/usr/bin/install -c -m 644 pg_config.h     '/home/pramod/git/postgresql/install/include/server'
+-/usr/bin/install -c -m 644 pg_config_ext.h '/home/pramod/git/postgresql/install/include/server'
+-/usr/bin/install -c -m 644 pg_config_os.h  '/home/pramod/git/postgresql/install/include/server'
+-/usr/bin/install -c -m 644 utils/errcodes.h '/home/pramod/git/postgresql/install/include/server/utils'
+-/usr/bin/install -c -m 644 utils/fmgroids.h '/home/pramod/git/postgresql/install/include/server/utils'
+-/usr/bin/install -c -m 644 utils/fmgrprotos.h '/home/pramod/git/postgresql/install/include/server/utils'
+-cp ./*.h '/home/pramod/git/postgresql/install/include/server'/
++/bin/mkdir -p '/home/pramod/git/postgresql/include/libpq' '/home/pramod/git/postgresql/include/internal/libpq'
++/bin/mkdir -p '/home/pramod/git/postgresql/include/server'/access '/home/pramod/git/postgresql/include/server'/bootstrap '/home/pramod/git/postgresql/include/server'/catalog '/home/pramod/git/postgresql/include/server'/commands '/home/pramod/git/postgresql/include/server'/common '/home/pramod/git/postgresql/include/server'/datatype '/home/pramod/git/postgresql/include/server'/executor '/home/pramod/git/postgresql/include/server'/fe_utils '/home/pramod/git/postgresql/include/server'/foreign '/home/pramod/git/postgresql/include/server'/jit '/home/pramod/git/postgresql/include/server'/lib '/home/pramod/git/postgresql/include/server'/libpq '/home/pramod/git/postgresql/include/server'/mb '/home/pramod/git/postgresql/include/server'/nodes '/home/pramod/git/postgresql/include/server'/optimizer '/home/pramod/git/postgresql/include/server'/parser '/home/pramod/git/postgresql/include/server'/partitioning '/home/pramod/git/postgresql/include/server'/postmaster '/home/pramod/git/postgresql/include/server'/regex '/home/pramod/git/postgresql/include/server'/replication '/home/pramod/git/postgresql/include/server'/rewrite '/home/pramod/git/postgresql/include/server'/statistics '/home/pramod/git/postgresql/include/server'/storage '/home/pramod/git/postgresql/include/server'/tcop '/home/pramod/git/postgresql/include/server'/snowball '/home/pramod/git/postgresql/include/server'/snowball/libstemmer '/home/pramod/git/postgresql/include/server'/tsearch '/home/pramod/git/postgresql/include/server'/tsearch/dicts '/home/pramod/git/postgresql/include/server'/utils '/home/pramod/git/postgresql/include/server'/port '/home/pramod/git/postgresql/include/server'/port/atomics '/home/pramod/git/postgresql/include/server'/port/win32 '/home/pramod/git/postgresql/include/server'/port/win32_msvc '/home/pramod/git/postgresql/include/server'/port/win32_msvc/sys '/home/pramod/git/postgresql/include/server'/port/win32/arpa '/home/pramod/git/postgresql/include/server'/port/win32/netinet '/home/pramod/git/postgresql/include/server'/port/win32/sys '/home/pramod/git/postgresql/include/server'/portability
++/usr/bin/install -c -m 644 ./postgres_ext.h   '/home/pramod/git/postgresql/include'
++/usr/bin/install -c -m 644 ./libpq/libpq-fs.h '/home/pramod/git/postgresql/include/libpq'
++/usr/bin/install -c -m 644 pg_config.h     '/home/pramod/git/postgresql/include'
++/usr/bin/install -c -m 644 pg_config_ext.h '/home/pramod/git/postgresql/include'
++/usr/bin/install -c -m 644 pg_config_os.h  '/home/pramod/git/postgresql/include'
++/usr/bin/install -c -m 644 ./pg_config_manual.h '/home/pramod/git/postgresql/include'
++/usr/bin/install -c -m 644 ./c.h            '/home/pramod/git/postgresql/include/internal'
++/usr/bin/install -c -m 644 ./port.h         '/home/pramod/git/postgresql/include/internal'
++/usr/bin/install -c -m 644 ./postgres_fe.h  '/home/pramod/git/postgresql/include/internal'
++/usr/bin/install -c -m 644 ./libpq/pqcomm.h '/home/pramod/git/postgresql/include/internal/libpq'
++/usr/bin/install -c -m 644 pg_config.h     '/home/pramod/git/postgresql/include/server'
++/usr/bin/install -c -m 644 pg_config_ext.h '/home/pramod/git/postgresql/include/server'
++/usr/bin/install -c -m 644 pg_config_os.h  '/home/pramod/git/postgresql/include/server'
++/usr/bin/install -c -m 644 utils/errcodes.h '/home/pramod/git/postgresql/include/server/utils'
++/usr/bin/install -c -m 644 utils/fmgroids.h '/home/pramod/git/postgresql/include/server/utils'
++/usr/bin/install -c -m 644 utils/fmgrprotos.h '/home/pramod/git/postgresql/include/server/utils'
++cp ./*.h '/home/pramod/git/postgresql/include/server'/
+ for dir in access bootstrap catalog commands common datatype executor fe_utils foreign jit lib libpq mb nodes optimizer parser partitioning postmaster regex replication rewrite statistics storage tcop snowball snowball/libstemmer tsearch tsearch/dicts utils port port/atomics port/win32 port/win32_msvc port/win32_msvc/sys port/win32/arpa port/win32/netinet port/win32/sys portability; do \
+-  cp ./$dir/*.h '/home/pramod/git/postgresql/install/include/server'/$dir/ || exit; \
++  cp ./$dir/*.h '/home/pramod/git/postgresql/include/server'/$dir/ || exit; \
+ done
+-cd '/home/pramod/git/postgresql/install/include/server' && chmod 644 *.h
++cd '/home/pramod/git/postgresql/include/server' && chmod 644 *.h
+ for dir in access bootstrap catalog commands common datatype executor fe_utils foreign jit lib libpq mb nodes optimizer parser partitioning postmaster regex replication rewrite statistics storage tcop snowball snowball/libstemmer tsearch tsearch/dicts utils port port/atomics port/win32 port/win32_msvc port/win32_msvc/sys port/win32/arpa port/win32/netinet port/win32/sys portability; do \
+-  cd '/home/pramod/git/postgresql/install/include/server'/$dir || exit; \
++  cd '/home/pramod/git/postgresql/include/server'/$dir || exit; \
+   chmod 644 *.h || exit; \
+ done
+ make[2]: Leaving directory '/home/pramod/git/postgresql/src/include'
+@@ -793,31 +798,31 @@
+ make[4]: Entering directory '/home/pramod/git/postgresql/src/common'
+ make[4]: Nothing to be done for 'all'.
+ make[4]: Leaving directory '/home/pramod/git/postgresql/src/common'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib' '/home/pramod/git/postgresql/install/lib/pkgconfig' 
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/include' '/home/pramod/git/postgresql/install/include/internal' '/home/pramod/git/postgresql/install/share'
+-/usr/bin/install -c -m 755  libpq.so.5.13 '/home/pramod/git/postgresql/install/lib/libpq.so.5.13'
+-cd '/home/pramod/git/postgresql/install/lib' && \
++/bin/mkdir -p '/home/pramod/git/postgresql/lib' '/home/pramod/git/postgresql/lib/pkgconfig' 
++/bin/mkdir -p '/home/pramod/git/postgresql/include' '/home/pramod/git/postgresql/include/internal' '/home/pramod/git/postgresql/share'
++/usr/bin/install -c -m 755  libpq.so.5.13 '/home/pramod/git/postgresql/lib/libpq.so.5.13'
++cd '/home/pramod/git/postgresql/lib' && \
+ rm -f libpq.so.5 && \
+ ln -s libpq.so.5.13 libpq.so.5
+-cd '/home/pramod/git/postgresql/install/lib' && \
++cd '/home/pramod/git/postgresql/lib' && \
+ rm -f libpq.so && \
+ ln -s libpq.so.5.13 libpq.so
+-/usr/bin/install -c -m 644  libpq.a '/home/pramod/git/postgresql/install/lib/libpq.a'
+-/usr/bin/install -c -m 644 libpq.pc '/home/pramod/git/postgresql/install/lib/pkgconfig/libpq.pc'
+-/usr/bin/install -c -m 644 ./libpq-fe.h '/home/pramod/git/postgresql/install/include'
+-/usr/bin/install -c -m 644 ./libpq-events.h '/home/pramod/git/postgresql/install/include'
+-/usr/bin/install -c -m 644 ./libpq-int.h '/home/pramod/git/postgresql/install/include/internal'
+-/usr/bin/install -c -m 644 ./pqexpbuffer.h '/home/pramod/git/postgresql/install/include/internal'
+-/usr/bin/install -c -m 644 ./pg_service.conf.sample '/home/pramod/git/postgresql/install/share/pg_service.conf.sample'
++/usr/bin/install -c -m 644  libpq.a '/home/pramod/git/postgresql/lib/libpq.a'
++/usr/bin/install -c -m 644 libpq.pc '/home/pramod/git/postgresql/lib/pkgconfig/libpq.pc'
++/usr/bin/install -c -m 644 ./libpq-fe.h '/home/pramod/git/postgresql/include'
++/usr/bin/install -c -m 644 ./libpq-events.h '/home/pramod/git/postgresql/include'
++/usr/bin/install -c -m 644 ./libpq-int.h '/home/pramod/git/postgresql/include/internal'
++/usr/bin/install -c -m 644 ./pqexpbuffer.h '/home/pramod/git/postgresql/include/internal'
++/usr/bin/install -c -m 644 ./pg_service.conf.sample '/home/pramod/git/postgresql/share/pg_service.conf.sample'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/interfaces/libpq'
+ make -C ecpg install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/interfaces/ecpg'
+ make -C include install
+ make[4]: Entering directory '/home/pramod/git/postgresql/src/interfaces/ecpg/include'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/include' '/home/pramod/git/postgresql/install/include/informix/esql'
+-/usr/bin/install -c -m 644 ./ecpgerrno.h ./ecpglib.h ./ecpgtype.h ./sqlca.h ./sql3types.h ./ecpg_informix.h ./pgtypes_error.h ./pgtypes_numeric.h ./pgtypes_timestamp.h ./pgtypes_date.h ./pgtypes_interval.h ./pgtypes.h ./sqlda.h ./sqlda-compat.h ./sqlda-native.h '/home/pramod/git/postgresql/install/include/'
+-/usr/bin/install -c -m 644 ./datetime.h ./decimal.h ./sqltypes.h '/home/pramod/git/postgresql/install/include/informix/esql/'
+-/usr/bin/install -c -m 644 ../../../../src/interfaces/ecpg/include/ecpg_config.h '/home/pramod/git/postgresql/install/include'
++/bin/mkdir -p '/home/pramod/git/postgresql/include' '/home/pramod/git/postgresql/include/informix/esql'
++/usr/bin/install -c -m 644 ./ecpgerrno.h ./ecpglib.h ./ecpgtype.h ./sqlca.h ./sql3types.h ./ecpg_informix.h ./pgtypes_error.h ./pgtypes_numeric.h ./pgtypes_timestamp.h ./pgtypes_date.h ./pgtypes_interval.h ./pgtypes.h ./sqlda.h ./sqlda-compat.h ./sqlda-native.h '/home/pramod/git/postgresql/include/'
++/usr/bin/install -c -m 644 ./datetime.h ./decimal.h ./sqltypes.h '/home/pramod/git/postgresql/include/informix/esql/'
++/usr/bin/install -c -m 644 ../../../../src/interfaces/ecpg/include/ecpg_config.h '/home/pramod/git/postgresql/include'
+ make[4]: Leaving directory '/home/pramod/git/postgresql/src/interfaces/ecpg/include'
+ make -C pgtypeslib install
+ make[4]: Entering directory '/home/pramod/git/postgresql/src/interfaces/ecpg/pgtypeslib'
+@@ -829,16 +834,16 @@
+ make[5]: Entering directory '/home/pramod/git/postgresql/src/common'
+ make[5]: Nothing to be done for 'all'.
+ make[5]: Leaving directory '/home/pramod/git/postgresql/src/common'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib' '/home/pramod/git/postgresql/install/lib/pkgconfig' 
+-/usr/bin/install -c -m 755  libpgtypes.so.3.13 '/home/pramod/git/postgresql/install/lib/libpgtypes.so.3.13'
+-cd '/home/pramod/git/postgresql/install/lib' && \
++/bin/mkdir -p '/home/pramod/git/postgresql/lib' '/home/pramod/git/postgresql/lib/pkgconfig' 
++/usr/bin/install -c -m 755  libpgtypes.so.3.13 '/home/pramod/git/postgresql/lib/libpgtypes.so.3.13'
++cd '/home/pramod/git/postgresql/lib' && \
+ rm -f libpgtypes.so.3 && \
+ ln -s libpgtypes.so.3.13 libpgtypes.so.3
+-cd '/home/pramod/git/postgresql/install/lib' && \
++cd '/home/pramod/git/postgresql/lib' && \
+ rm -f libpgtypes.so && \
+ ln -s libpgtypes.so.3.13 libpgtypes.so
+-/usr/bin/install -c -m 644  libpgtypes.a '/home/pramod/git/postgresql/install/lib/libpgtypes.a'
+-/usr/bin/install -c -m 644 libpgtypes.pc '/home/pramod/git/postgresql/install/lib/pkgconfig/libpgtypes.pc'
++/usr/bin/install -c -m 644  libpgtypes.a '/home/pramod/git/postgresql/lib/libpgtypes.a'
++/usr/bin/install -c -m 644 libpgtypes.pc '/home/pramod/git/postgresql/lib/pkgconfig/libpgtypes.pc'
+ make[4]: Leaving directory '/home/pramod/git/postgresql/src/interfaces/ecpg/pgtypeslib'
+ make -C ecpglib install
+ make[4]: Entering directory '/home/pramod/git/postgresql/src/interfaces/ecpg/ecpglib'
+@@ -864,16 +869,16 @@
+ make[6]: Nothing to be done for 'all'.
+ make[6]: Leaving directory '/home/pramod/git/postgresql/src/common'
+ make[5]: Leaving directory '/home/pramod/git/postgresql/src/interfaces/ecpg/pgtypeslib'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib' '/home/pramod/git/postgresql/install/lib/pkgconfig' 
+-/usr/bin/install -c -m 755  libecpg.so.6.13 '/home/pramod/git/postgresql/install/lib/libecpg.so.6.13'
+-cd '/home/pramod/git/postgresql/install/lib' && \
++/bin/mkdir -p '/home/pramod/git/postgresql/lib' '/home/pramod/git/postgresql/lib/pkgconfig' 
++/usr/bin/install -c -m 755  libecpg.so.6.13 '/home/pramod/git/postgresql/lib/libecpg.so.6.13'
++cd '/home/pramod/git/postgresql/lib' && \
+ rm -f libecpg.so.6 && \
+ ln -s libecpg.so.6.13 libecpg.so.6
+-cd '/home/pramod/git/postgresql/install/lib' && \
++cd '/home/pramod/git/postgresql/lib' && \
+ rm -f libecpg.so && \
+ ln -s libecpg.so.6.13 libecpg.so
+-/usr/bin/install -c -m 644  libecpg.a '/home/pramod/git/postgresql/install/lib/libecpg.a'
+-/usr/bin/install -c -m 644 libecpg.pc '/home/pramod/git/postgresql/install/lib/pkgconfig/libecpg.pc'
++/usr/bin/install -c -m 644  libecpg.a '/home/pramod/git/postgresql/lib/libecpg.a'
++/usr/bin/install -c -m 644 libecpg.pc '/home/pramod/git/postgresql/lib/pkgconfig/libecpg.pc'
+ make[4]: Leaving directory '/home/pramod/git/postgresql/src/interfaces/ecpg/ecpglib'
+ make -C compatlib install
+ make[4]: Entering directory '/home/pramod/git/postgresql/src/interfaces/ecpg/compatlib'
+@@ -913,16 +918,16 @@
+ make[6]: Nothing to be done for 'all'.
+ make[6]: Leaving directory '/home/pramod/git/postgresql/src/common'
+ make[5]: Leaving directory '/home/pramod/git/postgresql/src/interfaces/ecpg/pgtypeslib'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib' '/home/pramod/git/postgresql/install/lib/pkgconfig' 
+-/usr/bin/install -c -m 755  libecpg_compat.so.3.13 '/home/pramod/git/postgresql/install/lib/libecpg_compat.so.3.13'
+-cd '/home/pramod/git/postgresql/install/lib' && \
++/bin/mkdir -p '/home/pramod/git/postgresql/lib' '/home/pramod/git/postgresql/lib/pkgconfig' 
++/usr/bin/install -c -m 755  libecpg_compat.so.3.13 '/home/pramod/git/postgresql/lib/libecpg_compat.so.3.13'
++cd '/home/pramod/git/postgresql/lib' && \
+ rm -f libecpg_compat.so.3 && \
+ ln -s libecpg_compat.so.3.13 libecpg_compat.so.3
+-cd '/home/pramod/git/postgresql/install/lib' && \
++cd '/home/pramod/git/postgresql/lib' && \
+ rm -f libecpg_compat.so && \
+ ln -s libecpg_compat.so.3.13 libecpg_compat.so
+-/usr/bin/install -c -m 644  libecpg_compat.a '/home/pramod/git/postgresql/install/lib/libecpg_compat.a'
+-/usr/bin/install -c -m 644 libecpg_compat.pc '/home/pramod/git/postgresql/install/lib/pkgconfig/libecpg_compat.pc'
++/usr/bin/install -c -m 644  libecpg_compat.a '/home/pramod/git/postgresql/lib/libecpg_compat.a'
++/usr/bin/install -c -m 644 libecpg_compat.pc '/home/pramod/git/postgresql/lib/pkgconfig/libecpg_compat.pc'
+ make[4]: Leaving directory '/home/pramod/git/postgresql/src/interfaces/ecpg/compatlib'
+ make -C preproc install
+ make[4]: Entering directory '/home/pramod/git/postgresql/src/interfaces/ecpg/preproc'
+@@ -934,8 +939,8 @@
+ make[5]: Entering directory '/home/pramod/git/postgresql/src/common'
+ make[5]: Nothing to be done for 'all'.
+ make[5]: Leaving directory '/home/pramod/git/postgresql/src/common'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/bin'
+-/usr/bin/install -c  ecpg '/home/pramod/git/postgresql/install/bin'
++/bin/mkdir -p '/home/pramod/git/postgresql/bin'
++/usr/bin/install -c  ecpg '/home/pramod/git/postgresql/bin'
+ make[4]: Leaving directory '/home/pramod/git/postgresql/src/interfaces/ecpg/preproc'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/interfaces/ecpg'
+ make[2]: Leaving directory '/home/pramod/git/postgresql/src/interfaces'
+@@ -952,18 +957,18 @@
+ make[4]: Nothing to be done for 'all'.
+ make[4]: Leaving directory '/home/pramod/git/postgresql/src/common'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/interfaces/libpq'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib'
+-/usr/bin/install -c -m 755  libpqwalreceiver.so '/home/pramod/git/postgresql/install/lib/libpqwalreceiver.so'
++/bin/mkdir -p '/home/pramod/git/postgresql/lib'
++/usr/bin/install -c -m 755  libpqwalreceiver.so '/home/pramod/git/postgresql/lib/libpqwalreceiver.so'
+ make[2]: Leaving directory '/home/pramod/git/postgresql/src/backend/replication/libpqwalreceiver'
+ make -C backend/replication/pgoutput install
+ make[2]: Entering directory '/home/pramod/git/postgresql/src/backend/replication/pgoutput'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib'
+-/usr/bin/install -c -m 755  pgoutput.so '/home/pramod/git/postgresql/install/lib/pgoutput.so'
++/bin/mkdir -p '/home/pramod/git/postgresql/lib'
++/usr/bin/install -c -m 755  pgoutput.so '/home/pramod/git/postgresql/lib/pgoutput.so'
+ make[2]: Leaving directory '/home/pramod/git/postgresql/src/backend/replication/pgoutput'
+ make -C fe_utils install
+ make[2]: Entering directory '/home/pramod/git/postgresql/src/fe_utils'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib'
+-/usr/bin/install -c -m 644  libpgfeutils.a '/home/pramod/git/postgresql/install/lib/libpgfeutils.a'
++/bin/mkdir -p '/home/pramod/git/postgresql/lib'
++/usr/bin/install -c -m 644  libpgfeutils.a '/home/pramod/git/postgresql/lib/libpgfeutils.a'
+ make[2]: Leaving directory '/home/pramod/git/postgresql/src/fe_utils'
+ make -C bin install
+ make[2]: Entering directory '/home/pramod/git/postgresql/src/bin'
+@@ -1000,8 +1005,8 @@
+ make[4]: Entering directory '/home/pramod/git/postgresql/src/fe_utils'
+ make[4]: Nothing to be done for 'all'.
+ make[4]: Leaving directory '/home/pramod/git/postgresql/src/fe_utils'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/bin'
+-/usr/bin/install -c  initdb '/home/pramod/git/postgresql/install/bin/initdb'
++/bin/mkdir -p '/home/pramod/git/postgresql/bin'
++/usr/bin/install -c  initdb '/home/pramod/git/postgresql/bin/initdb'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/bin/initdb'
+ make -C pg_archivecleanup install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/bin/pg_archivecleanup'
+@@ -1013,8 +1018,8 @@
+ make[4]: Entering directory '/home/pramod/git/postgresql/src/common'
+ make[4]: Nothing to be done for 'all'.
+ make[4]: Leaving directory '/home/pramod/git/postgresql/src/common'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/bin'
+-/usr/bin/install -c  pg_archivecleanup '/home/pramod/git/postgresql/install/bin/pg_archivecleanup'
++/bin/mkdir -p '/home/pramod/git/postgresql/bin'
++/usr/bin/install -c  pg_archivecleanup '/home/pramod/git/postgresql/bin/pg_archivecleanup'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/bin/pg_archivecleanup'
+ make -C pg_basebackup install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/bin/pg_basebackup'
+@@ -1049,10 +1054,10 @@
+ make[4]: Entering directory '/home/pramod/git/postgresql/src/fe_utils'
+ make[4]: Nothing to be done for 'all'.
+ make[4]: Leaving directory '/home/pramod/git/postgresql/src/fe_utils'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/bin'
+-/usr/bin/install -c  pg_basebackup '/home/pramod/git/postgresql/install/bin/pg_basebackup'
+-/usr/bin/install -c  pg_receivewal '/home/pramod/git/postgresql/install/bin/pg_receivewal'
+-/usr/bin/install -c  pg_recvlogical '/home/pramod/git/postgresql/install/bin/pg_recvlogical'
++/bin/mkdir -p '/home/pramod/git/postgresql/bin'
++/usr/bin/install -c  pg_basebackup '/home/pramod/git/postgresql/bin/pg_basebackup'
++/usr/bin/install -c  pg_receivewal '/home/pramod/git/postgresql/bin/pg_receivewal'
++/usr/bin/install -c  pg_recvlogical '/home/pramod/git/postgresql/bin/pg_recvlogical'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/bin/pg_basebackup'
+ make -C pg_checksums install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/bin/pg_checksums'
+@@ -1064,8 +1069,8 @@
+ make[4]: Entering directory '/home/pramod/git/postgresql/src/common'
+ make[4]: Nothing to be done for 'all'.
+ make[4]: Leaving directory '/home/pramod/git/postgresql/src/common'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/bin'
+-/usr/bin/install -c  pg_checksums '/home/pramod/git/postgresql/install/bin/pg_checksums'
++/bin/mkdir -p '/home/pramod/git/postgresql/bin'
++/usr/bin/install -c  pg_checksums '/home/pramod/git/postgresql/bin/pg_checksums'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/bin/pg_checksums'
+ make -C pg_config install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/bin/pg_config'
+@@ -1077,8 +1082,8 @@
+ make[4]: Entering directory '/home/pramod/git/postgresql/src/common'
+ make[4]: Nothing to be done for 'all'.
+ make[4]: Leaving directory '/home/pramod/git/postgresql/src/common'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/bin'
+-/usr/bin/install -c -m 755 pg_config '/home/pramod/git/postgresql/install/bin/pg_config'
++/bin/mkdir -p '/home/pramod/git/postgresql/bin'
++/usr/bin/install -c -m 755 pg_config '/home/pramod/git/postgresql/bin/pg_config'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/bin/pg_config'
+ make -C pg_controldata install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/bin/pg_controldata'
+@@ -1090,8 +1095,8 @@
+ make[4]: Entering directory '/home/pramod/git/postgresql/src/common'
+ make[4]: Nothing to be done for 'all'.
+ make[4]: Leaving directory '/home/pramod/git/postgresql/src/common'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/bin'
+-/usr/bin/install -c  pg_controldata '/home/pramod/git/postgresql/install/bin/pg_controldata'
++/bin/mkdir -p '/home/pramod/git/postgresql/bin'
++/usr/bin/install -c  pg_controldata '/home/pramod/git/postgresql/bin/pg_controldata'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/bin/pg_controldata'
+ make -C pg_ctl install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/bin/pg_ctl'
+@@ -1103,8 +1108,8 @@
+ make[4]: Entering directory '/home/pramod/git/postgresql/src/common'
+ make[4]: Nothing to be done for 'all'.
+ make[4]: Leaving directory '/home/pramod/git/postgresql/src/common'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/bin'
+-/usr/bin/install -c  pg_ctl '/home/pramod/git/postgresql/install/bin/pg_ctl'
++/bin/mkdir -p '/home/pramod/git/postgresql/bin'
++/usr/bin/install -c  pg_ctl '/home/pramod/git/postgresql/bin/pg_ctl'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/bin/pg_ctl'
+ make -C pg_dump install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/bin/pg_dump'
+@@ -1139,10 +1144,10 @@
+ make[4]: Entering directory '/home/pramod/git/postgresql/src/fe_utils'
+ make[4]: Nothing to be done for 'all'.
+ make[4]: Leaving directory '/home/pramod/git/postgresql/src/fe_utils'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/bin'
+-/usr/bin/install -c  pg_dump '/home/pramod/git/postgresql/install/bin'/pg_dump
+-/usr/bin/install -c  pg_restore '/home/pramod/git/postgresql/install/bin'/pg_restore
+-/usr/bin/install -c  pg_dumpall '/home/pramod/git/postgresql/install/bin'/pg_dumpall
++/bin/mkdir -p '/home/pramod/git/postgresql/bin'
++/usr/bin/install -c  pg_dump '/home/pramod/git/postgresql/bin'/pg_dump
++/usr/bin/install -c  pg_restore '/home/pramod/git/postgresql/bin'/pg_restore
++/usr/bin/install -c  pg_dumpall '/home/pramod/git/postgresql/bin'/pg_dumpall
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/bin/pg_dump'
+ make -C pg_resetwal install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/bin/pg_resetwal'
+@@ -1154,8 +1159,8 @@
+ make[4]: Entering directory '/home/pramod/git/postgresql/src/common'
+ make[4]: Nothing to be done for 'all'.
+ make[4]: Leaving directory '/home/pramod/git/postgresql/src/common'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/bin'
+-/usr/bin/install -c  pg_resetwal '/home/pramod/git/postgresql/install/bin/pg_resetwal'
++/bin/mkdir -p '/home/pramod/git/postgresql/bin'
++/usr/bin/install -c  pg_resetwal '/home/pramod/git/postgresql/bin/pg_resetwal'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/bin/pg_resetwal'
+ make -C pg_rewind install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/bin/pg_rewind'
+@@ -1178,8 +1183,8 @@
+ make[4]: Entering directory '/home/pramod/git/postgresql/src/common'
+ make[4]: Nothing to be done for 'all'.
+ make[4]: Leaving directory '/home/pramod/git/postgresql/src/common'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/bin'
+-/usr/bin/install -c  pg_rewind '/home/pramod/git/postgresql/install/bin/pg_rewind'
++/bin/mkdir -p '/home/pramod/git/postgresql/bin'
++/usr/bin/install -c  pg_rewind '/home/pramod/git/postgresql/bin/pg_rewind'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/bin/pg_rewind'
+ make -C pg_test_fsync install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/bin/pg_test_fsync'
+@@ -1191,8 +1196,8 @@
+ make[4]: Entering directory '/home/pramod/git/postgresql/src/common'
+ make[4]: Nothing to be done for 'all'.
+ make[4]: Leaving directory '/home/pramod/git/postgresql/src/common'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/bin'
+-/usr/bin/install -c  pg_test_fsync '/home/pramod/git/postgresql/install/bin/pg_test_fsync'
++/bin/mkdir -p '/home/pramod/git/postgresql/bin'
++/usr/bin/install -c  pg_test_fsync '/home/pramod/git/postgresql/bin/pg_test_fsync'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/bin/pg_test_fsync'
+ make -C pg_test_timing install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/bin/pg_test_timing'
+@@ -1204,8 +1209,8 @@
+ make[4]: Entering directory '/home/pramod/git/postgresql/src/common'
+ make[4]: Nothing to be done for 'all'.
+ make[4]: Leaving directory '/home/pramod/git/postgresql/src/common'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/bin'
+-/usr/bin/install -c  pg_test_timing '/home/pramod/git/postgresql/install/bin/pg_test_timing'
++/bin/mkdir -p '/home/pramod/git/postgresql/bin'
++/usr/bin/install -c  pg_test_timing '/home/pramod/git/postgresql/bin/pg_test_timing'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/bin/pg_test_timing'
+ make -C pg_upgrade install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/bin/pg_upgrade'
+@@ -1240,8 +1245,8 @@
+ make[4]: Entering directory '/home/pramod/git/postgresql/src/fe_utils'
+ make[4]: Nothing to be done for 'all'.
+ make[4]: Leaving directory '/home/pramod/git/postgresql/src/fe_utils'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/bin'
+-/usr/bin/install -c  pg_upgrade '/home/pramod/git/postgresql/install/bin/pg_upgrade'
++/bin/mkdir -p '/home/pramod/git/postgresql/bin'
++/usr/bin/install -c  pg_upgrade '/home/pramod/git/postgresql/bin/pg_upgrade'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/bin/pg_upgrade'
+ make -C pg_verifybackup install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/bin/pg_verifybackup'
+@@ -1276,8 +1281,8 @@
+ make[4]: Entering directory '/home/pramod/git/postgresql/src/fe_utils'
+ make[4]: Nothing to be done for 'all'.
+ make[4]: Leaving directory '/home/pramod/git/postgresql/src/fe_utils'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/bin'
+-/usr/bin/install -c  pg_verifybackup '/home/pramod/git/postgresql/install/bin/pg_verifybackup'
++/bin/mkdir -p '/home/pramod/git/postgresql/bin'
++/usr/bin/install -c  pg_verifybackup '/home/pramod/git/postgresql/bin/pg_verifybackup'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/bin/pg_verifybackup'
+ make -C pg_waldump install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/bin/pg_waldump'
+@@ -1289,8 +1294,8 @@
+ make[4]: Entering directory '/home/pramod/git/postgresql/src/common'
+ make[4]: Nothing to be done for 'all'.
+ make[4]: Leaving directory '/home/pramod/git/postgresql/src/common'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/bin'
+-/usr/bin/install -c  pg_waldump '/home/pramod/git/postgresql/install/bin/pg_waldump'
++/bin/mkdir -p '/home/pramod/git/postgresql/bin'
++/usr/bin/install -c  pg_waldump '/home/pramod/git/postgresql/bin/pg_waldump'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/bin/pg_waldump'
+ make -C pgbench install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/bin/pgbench'
+@@ -1325,8 +1330,8 @@
+ make[4]: Entering directory '/home/pramod/git/postgresql/src/fe_utils'
+ make[4]: Nothing to be done for 'all'.
+ make[4]: Leaving directory '/home/pramod/git/postgresql/src/fe_utils'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/bin'
+-/usr/bin/install -c  pgbench '/home/pramod/git/postgresql/install/bin/pgbench'
++/bin/mkdir -p '/home/pramod/git/postgresql/bin'
++/usr/bin/install -c  pgbench '/home/pramod/git/postgresql/bin/pgbench'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/bin/pgbench'
+ make -C psql install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/bin/psql'
+@@ -1361,9 +1366,9 @@
+ make[4]: Entering directory '/home/pramod/git/postgresql/src/fe_utils'
+ make[4]: Nothing to be done for 'all'.
+ make[4]: Leaving directory '/home/pramod/git/postgresql/src/fe_utils'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/bin' '/home/pramod/git/postgresql/install/share'
+-/usr/bin/install -c  psql '/home/pramod/git/postgresql/install/bin/psql'
+-/usr/bin/install -c -m 644 ./psqlrc.sample '/home/pramod/git/postgresql/install/share/psqlrc.sample'
++/bin/mkdir -p '/home/pramod/git/postgresql/bin' '/home/pramod/git/postgresql/share'
++/usr/bin/install -c  psql '/home/pramod/git/postgresql/bin/psql'
++/usr/bin/install -c -m 644 ./psqlrc.sample '/home/pramod/git/postgresql/share/psqlrc.sample'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/bin/psql'
+ make -C scripts install
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/bin/scripts'
+@@ -1398,15 +1403,15 @@
+ make[4]: Entering directory '/home/pramod/git/postgresql/src/fe_utils'
+ make[4]: Nothing to be done for 'all'.
+ make[4]: Leaving directory '/home/pramod/git/postgresql/src/fe_utils'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/bin'
+-/usr/bin/install -c  createdb   '/home/pramod/git/postgresql/install/bin'/createdb
+-/usr/bin/install -c  dropdb     '/home/pramod/git/postgresql/install/bin'/dropdb
+-/usr/bin/install -c  createuser '/home/pramod/git/postgresql/install/bin'/createuser
+-/usr/bin/install -c  dropuser   '/home/pramod/git/postgresql/install/bin'/dropuser
+-/usr/bin/install -c  clusterdb  '/home/pramod/git/postgresql/install/bin'/clusterdb
+-/usr/bin/install -c  vacuumdb   '/home/pramod/git/postgresql/install/bin'/vacuumdb
+-/usr/bin/install -c  reindexdb  '/home/pramod/git/postgresql/install/bin'/reindexdb
+-/usr/bin/install -c  pg_isready '/home/pramod/git/postgresql/install/bin'/pg_isready
++/bin/mkdir -p '/home/pramod/git/postgresql/bin'
++/usr/bin/install -c  createdb   '/home/pramod/git/postgresql/bin'/createdb
++/usr/bin/install -c  dropdb     '/home/pramod/git/postgresql/bin'/dropdb
++/usr/bin/install -c  createuser '/home/pramod/git/postgresql/bin'/createuser
++/usr/bin/install -c  dropuser   '/home/pramod/git/postgresql/bin'/dropuser
++/usr/bin/install -c  clusterdb  '/home/pramod/git/postgresql/bin'/clusterdb
++/usr/bin/install -c  vacuumdb   '/home/pramod/git/postgresql/bin'/vacuumdb
++/usr/bin/install -c  reindexdb  '/home/pramod/git/postgresql/bin'/reindexdb
++/usr/bin/install -c  pg_isready '/home/pramod/git/postgresql/bin'/pg_isready
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/bin/scripts'
+ make[2]: Leaving directory '/home/pramod/git/postgresql/src/bin'
+ make -C pl install
+@@ -1415,19 +1420,19 @@
+ make[3]: Entering directory '/home/pramod/git/postgresql/src/pl/plpgsql'
+ make -C src install
+ make[4]: Entering directory '/home/pramod/git/postgresql/src/pl/plpgsql/src'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib'
+-/usr/bin/install -c -m 755  plpgsql.so '/home/pramod/git/postgresql/install/lib/plpgsql.so'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/share/extension'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/include/server'
+-/usr/bin/install -c -m 644 ./plpgsql.control ./plpgsql--1.0.sql '/home/pramod/git/postgresql/install/share/extension/'
+-/usr/bin/install -c -m 644 './plpgsql.h' '/home/pramod/git/postgresql/install/include/server'
++/bin/mkdir -p '/home/pramod/git/postgresql/lib'
++/usr/bin/install -c -m 755  plpgsql.so '/home/pramod/git/postgresql/lib/plpgsql.so'
++/bin/mkdir -p '/home/pramod/git/postgresql/share/extension'
++/bin/mkdir -p '/home/pramod/git/postgresql/include/server'
++/usr/bin/install -c -m 644 ./plpgsql.control ./plpgsql--1.0.sql '/home/pramod/git/postgresql/share/extension/'
++/usr/bin/install -c -m 644 './plpgsql.h' '/home/pramod/git/postgresql/include/server'
+ make[4]: Leaving directory '/home/pramod/git/postgresql/src/pl/plpgsql/src'
+ make[3]: Leaving directory '/home/pramod/git/postgresql/src/pl/plpgsql'
+ make[2]: Leaving directory '/home/pramod/git/postgresql/src/pl'
+ make -C makefiles install
+ make[2]: Entering directory '/home/pramod/git/postgresql/src/makefiles'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib/pgxs/src/makefiles'
+-/usr/bin/install -c -m 644 ./pgxs.mk '/home/pramod/git/postgresql/install/lib/pgxs/src/makefiles/'
++/bin/mkdir -p '/home/pramod/git/postgresql/lib/pgxs/src/makefiles'
++/usr/bin/install -c -m 644 ./pgxs.mk '/home/pramod/git/postgresql/lib/pgxs/src/makefiles/'
+ make[2]: Leaving directory '/home/pramod/git/postgresql/src/makefiles'
+ make -C test/regress install
+ make[2]: Entering directory '/home/pramod/git/postgresql/src/test/regress'
+@@ -1443,8 +1448,8 @@
+ make[3]: Entering directory '/home/pramod/git/postgresql/contrib/spi'
+ make[3]: Nothing to be done for 'all'.
+ make[3]: Leaving directory '/home/pramod/git/postgresql/contrib/spi'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib/pgxs/src/test/regress'
+-/usr/bin/install -c  pg_regress '/home/pramod/git/postgresql/install/lib/pgxs/src/test/regress/pg_regress'
++/bin/mkdir -p '/home/pramod/git/postgresql/lib/pgxs/src/test/regress'
++/usr/bin/install -c  pg_regress '/home/pramod/git/postgresql/lib/pgxs/src/test/regress/pg_regress'
+ make[2]: Leaving directory '/home/pramod/git/postgresql/src/test/regress'
+ make -C test/isolation install
+ make[2]: Entering directory '/home/pramod/git/postgresql/src/test/isolation'
+@@ -1472,15 +1477,15 @@
+ make[2]: Entering directory '/home/pramod/git/postgresql/src/test/perl'
+ make[2]: Nothing to be done for 'install'.
+ make[2]: Leaving directory '/home/pramod/git/postgresql/src/test/perl'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib/pgxs/src'
+-/usr/bin/install -c -m 644 Makefile.global '/home/pramod/git/postgresql/install/lib/pgxs/src/Makefile.global'
+-/usr/bin/install -c -m 644 Makefile.port '/home/pramod/git/postgresql/install/lib/pgxs/src/Makefile.port'
+-/usr/bin/install -c -m 644 ./Makefile.shlib '/home/pramod/git/postgresql/install/lib/pgxs/src/Makefile.shlib'
+-/usr/bin/install -c -m 644 ./nls-global.mk '/home/pramod/git/postgresql/install/lib/pgxs/src/nls-global.mk'
++/bin/mkdir -p '/home/pramod/git/postgresql/lib/pgxs/src'
++/usr/bin/install -c -m 644 Makefile.global '/home/pramod/git/postgresql/lib/pgxs/src/Makefile.global'
++/usr/bin/install -c -m 644 Makefile.port '/home/pramod/git/postgresql/lib/pgxs/src/Makefile.port'
++/usr/bin/install -c -m 644 ./Makefile.shlib '/home/pramod/git/postgresql/lib/pgxs/src/Makefile.shlib'
++/usr/bin/install -c -m 644 ./nls-global.mk '/home/pramod/git/postgresql/lib/pgxs/src/nls-global.mk'
+ make[1]: Leaving directory '/home/pramod/git/postgresql/src'
+ make -C config install
+ make[1]: Entering directory '/home/pramod/git/postgresql/config'
+-/bin/mkdir -p '/home/pramod/git/postgresql/install/lib/pgxs/config'
+-/usr/bin/install -c -m 755 ./install-sh '/home/pramod/git/postgresql/install/lib/pgxs/config/install-sh'
+-/usr/bin/install -c -m 755 ./missing '/home/pramod/git/postgresql/install/lib/pgxs/config/missing'
++/bin/mkdir -p '/home/pramod/git/postgresql/lib/pgxs/config'
++/usr/bin/install -c -m 755 ./install-sh '/home/pramod/git/postgresql/lib/pgxs/config/install-sh'
++/usr/bin/install -c -m 755 ./missing '/home/pramod/git/postgresql/lib/pgxs/config/missing'
+ make[1]: Leaving directory '/home/pramod/git/postgresql/config'

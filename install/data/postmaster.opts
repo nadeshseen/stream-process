@@ -1,0 +1,1 @@
+/home/nadesh/git/postgresql/install/bin/postgres "-D" "/home/nadesh/git/postgresql/install/data"

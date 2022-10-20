@@ -1,0 +1,753 @@
+2022-10-15 17:28:39.126 IST [52003] LOG:  starting PostgreSQL 14.5 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0, 64-bit
+2022-10-15 17:28:39.126 IST [52003] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2022-10-15 17:28:39.128 IST [52003] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2022-10-15 17:28:39.130 IST [52004] LOG:  database system was shut down at 2022-10-15 17:28:28 IST
+2022-10-15 17:28:39.133 IST [52003] LOG:  database system is ready to accept connections
+2022-10-15 17:29:05.971 IST [52003] LOG:  received fast shutdown request
+2022-10-15 17:29:05.973 IST [52003] LOG:  aborting any active transactions
+2022-10-15 17:29:05.974 IST [52003] LOG:  background worker "logical replication launcher" (PID 52010) exited with exit code 1
+2022-10-15 17:29:05.974 IST [52005] LOG:  shutting down
+2022-10-15 17:29:05.994 IST [52003] LOG:  database system is shut down
+2022-10-15 22:11:30.730 IST [81762] LOG:  starting PostgreSQL 14.5 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0, 64-bit
+2022-10-15 22:11:30.731 IST [81762] LOG:  listening on IPv4 address "127.0.0.1", port 9432
+2022-10-15 22:11:30.732 IST [81762] LOG:  listening on Unix socket "/tmp/.s.PGSQL.9432"
+2022-10-15 22:11:30.734 IST [81763] LOG:  database system was shut down at 2022-10-15 22:06:32 IST
+2022-10-15 22:11:30.737 IST [81762] LOG:  database system is ready to accept connections
+2022-10-15 22:12:57.151 IST [81762] LOG:  received fast shutdown request
+2022-10-15 22:12:57.152 IST [81762] LOG:  aborting any active transactions
+2022-10-15 22:12:57.152 IST [81762] LOG:  background worker "logical replication launcher" (PID 81769) exited with exit code 1
+2022-10-15 22:12:57.152 IST [81764] LOG:  shutting down
+2022-10-15 22:12:57.167 IST [81762] LOG:  database system is shut down
+2022-10-15 22:28:31.116 IST [83812] LOG:  starting PostgreSQL 14.5 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0, 64-bit
+2022-10-15 22:28:31.117 IST [83812] LOG:  listening on IPv4 address "127.0.0.1", port 9432
+2022-10-15 22:28:31.118 IST [83812] LOG:  listening on Unix socket "/tmp/.s.PGSQL.9432"
+2022-10-15 22:28:31.122 IST [83813] LOG:  database system was shut down at 2022-10-15 22:28:09 IST
+2022-10-15 22:28:31.125 IST [83812] LOG:  database system is ready to accept connections
+2022-10-15 22:30:00.883 IST [83940] ERROR:  syntax error at or near "stream_sum" at character 1
+2022-10-15 22:30:00.883 IST [83940] STATEMENT:  stream_sum
+	select * from student;
+2022-10-15 22:30:24.694 IST [83940] ERROR:  syntax error at or near "stream_sum" at character 1
+2022-10-15 22:30:24.694 IST [83940] STATEMENT:  stream_sum;
+2022-10-15 22:32:09.299 IST [83812] LOG:  received fast shutdown request
+2022-10-15 22:32:09.301 IST [83812] LOG:  aborting any active transactions
+2022-10-15 22:32:09.302 IST [83812] LOG:  background worker "logical replication launcher" (PID 83819) exited with exit code 1
+2022-10-15 22:32:09.302 IST [83814] LOG:  shutting down
+2022-10-15 22:32:09.317 IST [83812] LOG:  database system is shut down
+2022-10-15 22:34:02.808 IST [85603] LOG:  starting PostgreSQL 14.5 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0, 64-bit
+2022-10-15 22:34:02.809 IST [85603] LOG:  listening on IPv4 address "127.0.0.1", port 9432
+2022-10-15 22:34:02.810 IST [85603] LOG:  listening on Unix socket "/tmp/.s.PGSQL.9432"
+2022-10-15 22:34:02.812 IST [85604] LOG:  database system was shut down at 2022-10-15 22:32:09 IST
+2022-10-15 22:34:02.814 IST [85603] LOG:  database system is ready to accept connections
+	 1: sum	(typeid = 23, len = 4, typmod = -1, byval = t)
+	----
+	 1: sum = "0"	(typeid = 23, len = 4, typmod = -1, byval = t)
+	----
+	 1: sum = "0"	(typeid = 23, len = 4, typmod = -1, byval = t)
+	----
+backend> 	 1: sum	(typeid = 23, len = 4, typmod = -1, byval = t)
+	----
+	 1: sum = "0"	(typeid = 23, len = 4, typmod = -1, byval = t)
+	----
+	 1: sum = "0"	(typeid = 23, len = 4, typmod = -1, byval = t)
+	----
+backend> 	 1: id	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "00128"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Zhang"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Comp. Sci."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "102"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "12345"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Shankar"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Comp. Sci."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "32"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "19991"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Brandt"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "History"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "80"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "23121"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Chavez"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Finance"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "110"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "44553"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Peltier"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Physics"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "56"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "45678"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Levy"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Physics"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "46"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "54321"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Williams"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Comp. Sci."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "54"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "55739"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Sanchez"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Music"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "38"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "70557"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Snow"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Physics"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "0"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "76543"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Brown"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Comp. Sci."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "58"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "76653"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Aoi"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Elec. Eng."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "60"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "98765"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Bourikas"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Elec. Eng."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "98"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "98988"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Tanaka"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Biology"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "120"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+backend> 	 1: id	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "00128"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Zhang"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Comp. Sci."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "102"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "12345"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Shankar"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Comp. Sci."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "32"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "19991"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Brandt"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "History"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "80"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "23121"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Chavez"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Finance"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "110"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "44553"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Peltier"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Physics"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "56"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "45678"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Levy"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Physics"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "46"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "54321"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Williams"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Comp. Sci."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "54"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "55739"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Sanchez"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Music"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "38"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "70557"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Snow"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Physics"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "0"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "76543"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Brown"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Comp. Sci."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "58"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "76653"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Aoi"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Elec. Eng."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "60"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "98765"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Bourikas"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Elec. Eng."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "98"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "98988"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Tanaka"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Biology"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "120"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+backend> 2022-10-15 22:41:35.049 IST [85603] LOG:  received fast shutdown request
+2022-10-15 22:41:35.055 IST [85603] LOG:  aborting any active transactions
+2022-10-15 22:41:35.056 IST [85603] LOG:  background worker "logical replication launcher" (PID 85610) exited with exit code 1
+2022-10-15 22:41:35.056 IST [85605] LOG:  shutting down
+2022-10-15 22:41:35.066 IST [85603] LOG:  database system is shut down
+2022-10-15 22:42:30.963 IST [98088] LOG:  starting PostgreSQL 14.5 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0, 64-bit
+2022-10-15 22:42:30.963 IST [98088] LOG:  listening on IPv4 address "127.0.0.1", port 9432
+2022-10-15 22:42:30.965 IST [98088] LOG:  listening on Unix socket "/tmp/.s.PGSQL.9432"
+2022-10-15 22:42:30.968 IST [98089] LOG:  database system was shut down at 2022-10-15 22:42:21 IST
+2022-10-15 22:42:30.972 IST [98088] LOG:  database system is ready to accept connections
+	 1: id	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "00128"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Zhang"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Comp. Sci."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "102"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "12345"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Shankar"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Comp. Sci."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "32"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "19991"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Brandt"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "History"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "80"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "23121"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Chavez"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Finance"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "110"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "44553"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Peltier"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Physics"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "56"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "45678"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Levy"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Physics"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "46"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "54321"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Williams"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Comp. Sci."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "54"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "55739"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Sanchez"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Music"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "38"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "70557"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Snow"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Physics"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "0"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "76543"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Brown"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Comp. Sci."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "58"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "76653"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Aoi"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Elec. Eng."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "60"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "98765"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Bourikas"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Elec. Eng."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "98"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "98988"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Tanaka"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Biology"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "120"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+backend> 	 1: id	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "00128"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Zhang"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Comp. Sci."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "102"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "12345"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Shankar"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Comp. Sci."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "32"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "19991"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Brandt"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "History"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "80"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "23121"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Chavez"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Finance"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "110"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "44553"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Peltier"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Physics"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "56"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "45678"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Levy"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Physics"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "46"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "54321"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Williams"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Comp. Sci."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "54"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "55739"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Sanchez"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Music"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "38"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "70557"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Snow"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Physics"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "0"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "76543"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Brown"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Comp. Sci."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "58"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "76653"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Aoi"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Elec. Eng."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "60"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "98765"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Bourikas"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Elec. Eng."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "98"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "98988"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Tanaka"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Biology"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "120"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+backend> 2022-10-15 22:43:09.728 IST [98088] LOG:  received fast shutdown request
+2022-10-15 22:43:09.730 IST [98088] LOG:  aborting any active transactions
+2022-10-15 22:43:09.730 IST [98088] LOG:  background worker "logical replication launcher" (PID 98095) exited with exit code 1
+2022-10-15 22:43:09.730 IST [98090] LOG:  shutting down
+2022-10-15 22:43:09.747 IST [98088] LOG:  database system is shut down
+2022-10-15 23:03:00.484 IST [100587] LOG:  starting PostgreSQL 14.5 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0, 64-bit
+2022-10-15 23:03:00.484 IST [100587] LOG:  listening on IPv4 address "127.0.0.1", port 9432
+2022-10-15 23:03:00.486 IST [100587] LOG:  listening on Unix socket "/tmp/.s.PGSQL.9432"
+2022-10-15 23:03:00.488 IST [100588] LOG:  database system was shut down at 2022-10-15 23:02:49 IST
+2022-10-15 23:03:00.491 IST [100587] LOG:  database system is ready to accept connections
+	 1: schema	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "pg_temp_3"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "tmp_table"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "advisor"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "classroom"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "course"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "department"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "foo"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "instructor"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "prereq"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "section"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "student"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "takes"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "teaches"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "time_slot"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+backend> 	 1: schema	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "pg_temp_3"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "tmp_table"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "advisor"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "classroom"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "course"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "department"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "foo"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "instructor"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "prereq"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "section"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "student"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "takes"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "teaches"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "time_slot"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+backend> 2022-10-15 23:05:24.032 IST [100587] LOG:  received fast shutdown request
+2022-10-15 23:05:24.033 IST [100587] LOG:  aborting any active transactions
+2022-10-15 23:05:24.035 IST [100587] LOG:  background worker "logical replication launcher" (PID 100594) exited with exit code 1
+2022-10-15 23:05:24.035 IST [100589] LOG:  shutting down
+2022-10-15 23:05:24.053 IST [100587] LOG:  database system is shut down
+2022-10-15 23:06:31.475 IST [101070] LOG:  starting PostgreSQL 14.5 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0, 64-bit
+2022-10-15 23:06:31.475 IST [101070] LOG:  listening on IPv4 address "127.0.0.1", port 9435
+2022-10-15 23:06:31.476 IST [101070] LOG:  listening on Unix socket "/tmp/.s.PGSQL.9435"
+2022-10-15 23:06:31.479 IST [101071] LOG:  database system was shut down at 2022-10-15 23:05:24 IST
+2022-10-15 23:06:31.481 IST [101070] LOG:  database system is ready to accept connections
+	 1: schema	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "pg_temp_3"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "tmp_table"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "advisor"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "classroom"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "course"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "department"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "foo"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "instructor"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "prereq"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "section"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "student"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "takes"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "teaches"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+	 1: schema = "public"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 2: name = "time_slot"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	 3: type = "table"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	 4: owner = "nadesh"	(typeid = 19, len = 64, typmod = -1, byval = f)
+	----
+backend> 2022-10-15 23:08:57.829 IST [101070] LOG:  received fast shutdown request
+2022-10-15 23:08:57.830 IST [101070] LOG:  aborting any active transactions
+2022-10-15 23:08:57.831 IST [101070] LOG:  background worker "logical replication launcher" (PID 101077) exited with exit code 1
+2022-10-15 23:08:57.831 IST [101072] LOG:  shutting down
+2022-10-15 23:08:57.845 IST [101070] LOG:  database system is shut down
+2022-10-15 17:39:08.272 GMT [101612] LOG:  syntax error in file "/home/nadesh/git/postgresql/install/data/postgresql.conf" line 1, near token "\"
+2022-10-15 17:39:08.273 GMT [101612] FATAL:  configuration file "/home/nadesh/git/postgresql/install/data/postgresql.conf" contains errors
+2022-10-15 17:39:16.428 GMT [101654] LOG:  syntax error in file "/home/nadesh/git/postgresql/install/data/postgresql.conf" line 1, near token "\"
+2022-10-15 17:39:16.429 GMT [101654] FATAL:  configuration file "/home/nadesh/git/postgresql/install/data/postgresql.conf" contains errors
+2022-10-15 17:39:34.784 GMT [101730] LOG:  syntax error in file "/home/nadesh/git/postgresql/install/data/postgresql.conf" line 1, near token "\"
+2022-10-15 17:39:34.784 GMT [101730] FATAL:  configuration file "/home/nadesh/git/postgresql/install/data/postgresql.conf" contains errors
+2022-10-15 23:10:18.343 IST [101886] LOG:  starting PostgreSQL 14.5 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0, 64-bit
+2022-10-15 23:10:18.344 IST [101886] LOG:  listening on IPv4 address "127.0.0.1", port 9432
+2022-10-15 23:10:18.345 IST [101886] LOG:  listening on Unix socket "/tmp/.s.PGSQL.9432"
+2022-10-15 23:10:18.348 IST [101887] LOG:  database system was shut down at 2022-10-15 23:08:57 IST
+2022-10-15 23:10:18.351 IST [101886] LOG:  database system is ready to accept connections
+	 1: id	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "00128"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Zhang"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Comp. Sci."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "102"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "12345"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Shankar"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Comp. Sci."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "32"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "19991"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Brandt"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "History"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "80"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "23121"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Chavez"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Finance"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "110"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "44553"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Peltier"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Physics"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "56"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "45678"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Levy"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Physics"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "46"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "54321"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Williams"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Comp. Sci."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "54"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "55739"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Sanchez"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Music"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "38"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "70557"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Snow"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Physics"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "0"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "76543"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Brown"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Comp. Sci."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "58"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "76653"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Aoi"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Elec. Eng."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "60"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "98765"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Bourikas"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Elec. Eng."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "98"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "98988"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Tanaka"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Biology"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "120"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+backend> 2022-10-15 23:10:50.670 IST [101886] LOG:  received fast shutdown request
+2022-10-15 23:10:50.671 IST [101886] LOG:  aborting any active transactions
+2022-10-15 23:10:50.672 IST [101886] LOG:  background worker "logical replication launcher" (PID 101893) exited with exit code 1
+2022-10-15 23:10:50.672 IST [101888] LOG:  shutting down
+2022-10-15 23:10:50.689 IST [101886] LOG:  database system is shut down
+2022-10-15 23:54:43.384 IST [106189] LOG:  starting PostgreSQL 14.5 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0, 64-bit
+2022-10-15 23:54:43.384 IST [106189] LOG:  listening on IPv4 address "127.0.0.1", port 9432
+2022-10-15 23:54:43.386 IST [106189] LOG:  listening on Unix socket "/tmp/.s.PGSQL.9432"
+2022-10-15 23:54:43.388 IST [106190] LOG:  database system was shut down at 2022-10-15 23:52:59 IST
+2022-10-15 23:54:43.390 IST [106189] LOG:  database system is ready to accept connections
+	 1: id	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "00128"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Zhang"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Comp. Sci."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "102"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "12345"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Shankar"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Comp. Sci."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "32"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "19991"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Brandt"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "History"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "80"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "23121"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Chavez"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Finance"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "110"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "44553"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Peltier"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Physics"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "56"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "45678"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Levy"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Physics"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "46"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "54321"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Williams"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Comp. Sci."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "54"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "55739"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Sanchez"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Music"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "38"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "70557"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Snow"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Physics"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "0"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "76543"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Brown"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Comp. Sci."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "58"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "76653"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Aoi"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Elec. Eng."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "60"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "98765"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Bourikas"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Elec. Eng."	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "98"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+	 1: id = "98988"	(typeid = 1043, len = -1, typmod = 9, byval = f)
+	 2: name = "Tanaka"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 3: dept_name = "Biology"	(typeid = 1043, len = -1, typmod = 24, byval = f)
+	 4: tot_cred = "120"	(typeid = 1700, len = -1, typmod = 196612, byval = f)
+	----
+backend> 2022-10-15 23:55:32.078 IST [106189] LOG:  received fast shutdown request
+2022-10-15 23:55:32.079 IST [106189] LOG:  aborting any active transactions
+2022-10-15 23:55:32.080 IST [106189] LOG:  background worker "logical replication launcher" (PID 106196) exited with exit code 1
+2022-10-15 23:55:32.080 IST [106191] LOG:  shutting down
+2022-10-15 23:55:32.097 IST [106189] LOG:  database system is shut down
+2022-10-16 00:09:27.097 IST [112432] LOG:  starting PostgreSQL 14.5 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0, 64-bit
+2022-10-16 00:09:27.098 IST [112432] LOG:  listening on IPv4 address "127.0.0.1", port 9432
+2022-10-16 00:09:27.100 IST [112432] LOG:  listening on Unix socket "/tmp/.s.PGSQL.9432"
+2022-10-16 00:09:27.103 IST [112433] LOG:  database system was shut down at 2022-10-16 00:09:02 IST
+2022-10-16 00:09:27.105 IST [112432] LOG:  database system is ready to accept connections
+2022-10-16 00:10:49.225 IST [112432] LOG:  received fast shutdown request
+2022-10-16 00:10:49.226 IST [112432] LOG:  aborting any active transactions
+2022-10-16 00:10:49.226 IST [112432] LOG:  background worker "logical replication launcher" (PID 112439) exited with exit code 1
+2022-10-16 00:10:49.227 IST [112434] LOG:  shutting down
+2022-10-16 00:10:49.238 IST [112432] LOG:  database system is shut down
