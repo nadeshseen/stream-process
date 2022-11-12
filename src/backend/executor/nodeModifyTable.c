@@ -2398,8 +2398,14 @@ ExecModifyTable(PlanState *pstate)
 	}
 
 	/* Preload local variables */
+
 	resultRelInfo = node->resultRelInfo + node->mt_lastResultIndex;
 	subplanstate = outerPlanState(node);
+
+
+//	printf("node->mt_lastResultIndex - %d\n", node->mt_lastResultIndex);
+//	for(int relation_index=0;relation_index<1;relation_index++)
+//	printf("nodeModify Relation name - %s\n", RelationGetRelationName(*(estate->es_relations+relation_index)));
 
 	/*
 	 * Fetch rows from subplan, and execute the required table modification

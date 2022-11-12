@@ -45,6 +45,9 @@
 #include "utils/builtins.h"
 #include "utils/rel.h"
 
+
+#include<string.h>
+
 static void reform_and_rewrite_tuple(HeapTuple tuple,
 									 Relation OldHeap, Relation NewHeap,
 									 Datum *values, bool *isnull, RewriteState rwstate);
@@ -237,6 +240,9 @@ heapam_tuple_satisfies_snapshot(Relation rel, TupleTableSlot *slot,
  * ----------------------------------------------------------------------------
  */
 
+Relation global_relation;
+HeapTuple global_tuple;
+
 static void
 heapam_tuple_insert(Relation relation, TupleTableSlot *slot, CommandId cid,
 					int options, BulkInsertState bistate)
@@ -248,8 +254,37 @@ heapam_tuple_insert(Relation relation, TupleTableSlot *slot, CommandId cid,
 	slot->tts_tableOid = RelationGetRelid(relation);
 	tuple->t_tableOid = slot->tts_tableOid;
 
+//		relation->rd_id
+//		relation->rd_node->relNode
+
+	printf("Insertion in ");
+	printf("RelationId - %d, Relation name - %s\n",relation->rd_id, relation->rd_rel->relname);
+
+	if(strcmp(RelationGetRelationName(relation),"tmp_table")==0){
+		//do nothing if relation in tmp_table
+//		global_relation = relation;
+//		global_tuple = tuple;
+//		printf("Insertion in Relation Name - tmp_table\n");
+	}else{
+
+		printf("Insertion in ");
+//		printf("RelationId - %d, Relation name - %s\n",global_relation->rd_id, RelationGetRelationName(global_relation));
+//		heap_insert(global_relation, global_tuple, cid, options, bistate);
+
+		//ids student2-98781 student-16628, tmp_table-123380
+
+		Relation new_relation = RelationIdGetRelation(98781);
+		printf("RelationId - %d, Relation name - %s\n",new_relation->rd_id, RelationGetRelationName(new_relation));
+		heap_insert(new_relation, tuple, cid, options, bistate);
+		RelationClose(new_relation);
+	}
+
+
+
 	/* Perform the insertion, and copy the resulting ItemPointer */
+
 	heap_insert(relation, tuple, cid, options, bistate);
+
 	ItemPointerCopy(&tuple->t_self, &slot->tts_tid);
 
 	if (shouldFree)

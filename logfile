@@ -226,3 +226,34 @@ backend> 2022-10-15 23:50:13.335 IST [104391] LOG:  received fast shutdown reque
 2022-10-15 23:52:59.019 IST [105838] LOG:  background worker "logical replication launcher" (PID 105845) exited with exit code 1
 2022-10-15 23:52:59.019 IST [105840] LOG:  shutting down
 2022-10-15 23:52:59.030 IST [105838] LOG:  database system is shut down
+2022-10-20 19:35:58.010 IST [250987] LOG:  starting PostgreSQL 14.5 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0, 64-bit
+2022-10-20 19:35:58.010 IST [250987] LOG:  listening on IPv4 address "127.0.0.1", port 9432
+2022-10-20 19:35:58.012 IST [250987] LOG:  listening on Unix socket "/tmp/.s.PGSQL.9432"
+2022-10-20 19:35:58.015 IST [250988] LOG:  database system was shut down at 2022-10-20 19:35:54 IST
+2022-10-20 19:35:58.017 IST [250987] LOG:  database system is ready to accept connections
+2022-10-20 19:36:19.655 IST [251033] ERROR:  relation "tmp_table" already exists
+2022-10-20 19:36:19.655 IST [251033] STATEMENT:  create unlogged table tmp_table (relation_name varchar, column_name varchar, sum int, max int, min int, avg int, cnt int)
+2022-10-20 19:36:32.580 IST [251033] ERROR:  relation "tmp_table" already exists
+2022-10-20 19:36:32.580 IST [251033] STATEMENT:  create unlogged table tmp_table (relation_name varchar, column_name varchar, sum int, max int, min int, avg int, cnt int)
+2022-10-20 19:36:37.095 IST [251033] ERROR:  relation "tmp_table" already exists
+2022-10-20 19:36:37.095 IST [251033] STATEMENT:  create unlogged table tmp_table (relation_name varchar, column_name varchar, sum int, max int, min int, avg int, cnt int)
+2022-10-20 19:36:41.881 IST [251033] ERROR:  relation "tmp_table" already exists
+2022-10-20 19:36:41.881 IST [251033] STATEMENT:  create unlogged table tmp_table (relation_name varchar, column_name varchar, sum int, max int, min int, avg int, cnt int)
+2022-10-20 19:38:06.733 IST [250987] LOG:  received fast shutdown request
+2022-10-20 19:38:06.735 IST [250987] LOG:  aborting any active transactions
+2022-10-20 19:38:06.735 IST [250987] LOG:  background worker "logical replication launcher" (PID 250994) exited with exit code 1
+2022-10-20 19:38:06.735 IST [250989] LOG:  shutting down
+2022-10-20 19:38:06.745 IST [250987] LOG:  database system is shut down
+2022-10-20 19:38:08.790 IST [252303] LOG:  starting PostgreSQL 14.5 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0, 64-bit
+2022-10-20 19:38:08.791 IST [252303] LOG:  listening on IPv4 address "127.0.0.1", port 9432
+2022-10-20 19:38:08.792 IST [252303] LOG:  listening on Unix socket "/tmp/.s.PGSQL.9432"
+2022-10-20 19:38:08.794 IST [252304] LOG:  database system was shut down at 2022-10-20 19:38:06 IST
+2022-10-20 19:38:08.796 IST [252303] LOG:  database system is ready to accept connections
+	 1: id	(typeid = 23, len = 4, typmod = -1, byval = t)
+	 2: marks	(typeid = 23, len = 4, typmod = -1, byval = t)
+	----
+backend> 2022-10-20 19:38:59.973 IST [252303] LOG:  received fast shutdown request
+2022-10-20 19:38:59.974 IST [252303] LOG:  aborting any active transactions
+2022-10-20 19:38:59.975 IST [252303] LOG:  background worker "logical replication launcher" (PID 252310) exited with exit code 1
+2022-10-20 19:38:59.975 IST [252305] LOG:  shutting down
+2022-10-20 19:38:59.988 IST [252303] LOG:  database system is shut down

@@ -2106,6 +2106,7 @@ heap_insert(Relation relation, HeapTuple tup, CommandId cid,
 	 */
 	heaptup = heap_prepare_insert(relation, tup, xid, cid, options);
 
+
 	/*
 	 * Find buffer to insert this tuple into.  If the page is all visible,
 	 * this will also pin the requisite visibility map page.
@@ -2133,6 +2134,18 @@ heap_insert(Relation relation, HeapTuple tup, CommandId cid,
 
 	/* NO EREPORT(ERROR) from here till changes are logged */
 	START_CRIT_SECTION();
+
+	//nadesh
+
+//	printf("Relation Name - %s\n", RelationGetRelationName(relation));
+////	heaptup->t_data->t_ctid.
+//	printf("Number of tuples - %d\n", HeapTupleHeaderGetNatts(tup->t_data));
+////	printf("Tuple TID - %d\n", tup->t_data->t_ctid.);
+//	printf("Tuple datanum_typeid - %d\n",heaptup->t_data->t_choice.t_datum.datum_typeid );
+//	printf("Tuple datanum_typemod - %d\n",heaptup->t_data->t_choice.t_datum.datum_typmod );
+//	printf("Tuple datanum_len_ - %d\n\n",heaptup->t_data->t_choice.t_datum.datum_len_ );
+
+
 
 	RelationPutHeapTuple(relation, buffer, heaptup,
 						 (options & HEAP_INSERT_SPECULATIVE) != 0);

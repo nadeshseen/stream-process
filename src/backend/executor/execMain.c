@@ -2152,6 +2152,10 @@ ExecBuildSlotValueDescription(Oid reloid,
 		bool		column_perm = false;
 		char	   *val;
 		int			vallen;
+
+		//added by nadesh
+//		printf("ExecBuildSlotValueDescription - %s\n", val);
+
 		Form_pg_attribute att = TupleDescAttr(tupdesc, i);
 
 		/* ignore dropped columns */

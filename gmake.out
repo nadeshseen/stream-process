@@ -76,7 +76,8 @@ make[4]: Nothing to be done for 'all'.
 make[4]: Leaving directory '/home/nadesh/git/postgresql/src/backend/access/hash'
 make -C heap all
 make[4]: Entering directory '/home/nadesh/git/postgresql/src/backend/access/heap'
-make[4]: Nothing to be done for 'all'.
+gcc -Wall -Wmissing-prototypes -Wpointer-arith -Wdeclaration-after-statement -Werror=vla -Wendif-labels -Wmissing-format-attribute -Wimplicit-fallthrough=3 -Wcast-function-type -Wformat-security -fno-strict-aliasing -fwrapv -fexcess-precision=standard -Wno-format-truncation -Wno-stringop-truncation -g -O0 -I../../../../src/include  -D_GNU_SOURCE   -c -o heapam_handler.o heapam_handler.c
+touch objfiles.txt
 make[4]: Leaving directory '/home/nadesh/git/postgresql/src/backend/access/heap'
 make -C index all
 make[4]: Entering directory '/home/nadesh/git/postgresql/src/backend/access/index'
@@ -106,6 +107,7 @@ make -C transam all
 make[4]: Entering directory '/home/nadesh/git/postgresql/src/backend/access/transam'
 make[4]: Nothing to be done for 'all'.
 make[4]: Leaving directory '/home/nadesh/git/postgresql/src/backend/access/transam'
+( cat brin/objfiles.txt common/objfiles.txt gin/objfiles.txt gist/objfiles.txt hash/objfiles.txt heap/objfiles.txt index/objfiles.txt nbtree/objfiles.txt rmgrdesc/objfiles.txt spgist/objfiles.txt table/objfiles.txt tablesample/objfiles.txt transam/objfiles.txt; echo  ) >objfiles.txt
 make[3]: Leaving directory '/home/nadesh/git/postgresql/src/backend/access'
 make -C bootstrap all
 make[3]: Entering directory '/home/nadesh/git/postgresql/src/backend/bootstrap'
@@ -242,8 +244,7 @@ make[4]: Leaving directory '/home/nadesh/git/postgresql/src/backend/storage/sync
 make[3]: Leaving directory '/home/nadesh/git/postgresql/src/backend/storage'
 make -C tcop all
 make[3]: Entering directory '/home/nadesh/git/postgresql/src/backend/tcop'
-gcc -Wall -Wmissing-prototypes -Wpointer-arith -Wdeclaration-after-statement -Werror=vla -Wendif-labels -Wmissing-format-attribute -Wimplicit-fallthrough=3 -Wcast-function-type -Wformat-security -fno-strict-aliasing -fwrapv -fexcess-precision=standard -Wno-format-truncation -Wno-stringop-truncation -g -O0 -I../../../src/include  -D_GNU_SOURCE   -c -o postgres.o postgres.c
-touch objfiles.txt
+make[3]: Nothing to be done for 'all'.
 make[3]: Leaving directory '/home/nadesh/git/postgresql/src/backend/tcop'
 make -C tsearch all
 make[3]: Entering directory '/home/nadesh/git/postgresql/src/backend/tsearch'
