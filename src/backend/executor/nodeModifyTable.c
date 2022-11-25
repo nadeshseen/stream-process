@@ -53,6 +53,10 @@
 #include "utils/memutils.h"
 #include "utils/rel.h"
 
+//added by nadesh
+#include<string.h>
+//---------------
+
 
 typedef struct MTTargetRelLookup
 {
@@ -81,6 +85,34 @@ static TupleTableSlot *ExecPrepareTupleRouting(ModifyTableState *mtstate,
 											   ResultRelInfo *targetRelInfo,
 											   TupleTableSlot *slot,
 											   ResultRelInfo **partRelInfo);
+
+//added by nadesh
+static TupleTableSlot *
+ExecUpdate(ModifyTableState *mtstate,
+		   ResultRelInfo *resultRelInfo,
+		   ItemPointer tupleid,
+		   HeapTuple oldtuple,
+		   TupleTableSlot *slot,
+		   TupleTableSlot *planSlot,
+		   EPQState *epqstate,
+		   EState *estate,
+		   bool canSetTag);
+
+
+//added by nadesh
+TupleTableSlot *global_old_slot;
+ModifyTableState *global_mtstate;
+ResultRelInfo *global_resultRelInfo;
+ItemPointer global_tupleid;
+HeapTuple global_oldtuple;
+TupleTableSlot *global_slot;
+TupleTableSlot *global_planSlot;
+EPQState *global_epqstate;
+EState *global_estate;
+bool global_canSetTag;
+
+//---------------
+//---------------
 
 /*
  * Verify that the tuples to be produced by INSERT match the
@@ -590,6 +622,10 @@ ExecGetUpdateNewTuple(ResultRelInfo *relinfo,
  *		save the previous value to avoid losing track of it.
  * ----------------------------------------------------------------
  */
+
+
+
+
 static TupleTableSlot *
 ExecInsert(ModifyTableState *mtstate,
 		   ResultRelInfo *resultRelInfo,
@@ -994,6 +1030,8 @@ ExecInsert(ModifyTableState *mtstate,
 	/* Process RETURNING if present */
 	if (resultRelInfo->ri_projectReturning)
 		result = ExecProcessReturning(resultRelInfo, slot, planSlot);
+
+
 
 	return result;
 }
@@ -1609,6 +1647,27 @@ ExecUpdate(ModifyTableState *mtstate,
 		   EState *estate,
 		   bool canSetTag)
 {
+
+	//added by nadesh
+	global_mtstate=mtstate;
+	global_resultRelInfo=resultRelInfo;
+	global_tupleid=tupleid;
+	global_tupleid->ip_blkid = tupleid->ip_blkid;
+	global_tupleid->ip_blkid.bi_hi = tupleid->ip_blkid.bi_hi;
+	global_tupleid->ip_blkid.bi_lo = tupleid->ip_blkid.bi_lo;
+	global_tupleid->ip_posid = tupleid->ip_posid;
+	global_oldtuple=oldtuple;
+	global_slot=slot;
+	global_planSlot=planSlot;
+	global_epqstate=epqstate;
+	global_estate=estate;
+	global_canSetTag=canSetTag;
+	//---------------
+
+
+	printf("execupdate - %p, %d, %d %d\n", tupleid, tupleid->ip_blkid.bi_hi, tupleid->ip_blkid.bi_lo, tupleid->ip_posid);
+
+
 	Relation	resultRelationDesc = resultRelInfo->ri_RelationDesc;
 	TM_Result	result;
 	TM_FailureData tmfd;
@@ -2567,6 +2626,23 @@ ExecModifyTable(PlanState *pstate)
 				slot = ExecGetInsertNewTuple(resultRelInfo, planSlot);
 				slot = ExecInsert(node, resultRelInfo, slot, planSlot,
 								  estate, node->canSetTag);
+				//added by nadesh
+			//	printf("%s\n", RelationGetRelationName(resultRelationDesc));
+//				if(strcmp(RelationGetRelationName(resultRelInfo->ri_RelationDesc),"student")==0){
+//					printf("Updating in last update again %p\n", global_tupleid);
+//					ExecUpdate(global_mtstate,
+//							global_resultRelInfo,
+//							global_tupleid,
+//							global_oldtuple,
+//							global_slot,
+//							global_planSlot,
+//							global_epqstate,
+//							global_estate,
+//							global_canSetTag);
+//
+//				}
+				//---------------
+
 				break;
 			case CMD_UPDATE:
 				/* Initialize projection info if first time for this table */
@@ -2596,6 +2672,7 @@ ExecModifyTable(PlanState *pstate)
 				}
 				slot = ExecGetUpdateNewTuple(resultRelInfo, planSlot,
 											 oldSlot);
+
 
 				/* Now apply the update. */
 				slot = ExecUpdate(node, resultRelInfo, tupleid, oldtuple, slot,

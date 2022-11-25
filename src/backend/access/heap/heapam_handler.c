@@ -45,8 +45,9 @@
 #include "utils/builtins.h"
 #include "utils/rel.h"
 
-
+//added by nadesh
 #include<string.h>
+//---------------
 
 static void reform_and_rewrite_tuple(HeapTuple tuple,
 									 Relation OldHeap, Relation NewHeap,
@@ -240,8 +241,16 @@ heapam_tuple_satisfies_snapshot(Relation rel, TupleTableSlot *slot,
  * ----------------------------------------------------------------------------
  */
 
+//manually added by nadesh for testing
 Relation global_relation;
 HeapTuple global_tuple;
+ItemPointer global_otid;
+CommandId global_cid;
+Snapshot global_crosscheck;
+bool global_wait;
+TM_FailureData *global_tmfd;
+LockTupleMode *global_lockmode;
+//
 
 static void
 heapam_tuple_insert(Relation relation, TupleTableSlot *slot, CommandId cid,
@@ -256,33 +265,97 @@ heapam_tuple_insert(Relation relation, TupleTableSlot *slot, CommandId cid,
 
 //		relation->rd_id
 //		relation->rd_node->relNode
-
+//	relation->
 	printf("Insertion in ");
 	printf("RelationId - %d, Relation name - %s\n",relation->rd_id, relation->rd_rel->relname);
 
 	if(strcmp(RelationGetRelationName(relation),"tmp_table")==0){
-		//do nothing if relation in tmp_table
-//		global_relation = relation;
-//		global_tuple = tuple;
+		//tmp_table - 254721
+//		global_relation = RelationIdGetRelation(16747);
+//		heap_copytuple_with_tuple(tuple, global_tuple);
+//		global_tuple = heap_copytuple(tuple);
 //		printf("Insertion in Relation Name - tmp_table\n");
-	}else{
+	}else if(strcmp(RelationGetRelationName(relation),"student")==0){
+		Relation new_relation = RelationIdGetRelation(254721);
 
-		printf("Insertion in ");
-//		printf("RelationId - %d, Relation name - %s\n",global_relation->rd_id, RelationGetRelationName(global_relation));
-//		heap_insert(global_relation, global_tuple, cid, options, bistate);
+
+		TupleDesc	tupDesc;
+		Datum	   *dataum_values;
+		bool	   *nulls;
+		tupDesc = RelationGetDescr(new_relation);
+		dataum_values = (Datum *) palloc(tupDesc->natts * sizeof(Datum));
+		nulls = (bool *) palloc(tupDesc->natts * sizeof(bool));
+//		MemSet(values, 0, sizeof(values));
+		MemSet(nulls, 0, sizeof(nulls));
+
+		printf("new relation attributes - %d\n", tupDesc->natts);
+		/* CS631 start */
+
+		TupleDesc	typeinfo = slot->tts_tupleDescriptor;
+		int			natts = typeinfo->natts;
+		int			i;
+		Datum		attr;
+		char	   *value;
+		bool		isnull;
+		Oid			typoutput;
+		bool		typisvarlena;
+
+		char *relation_name = RelationGetRelationName(relation);
+		for (i = 0; i < natts; ++i)
+		{
+			attr = slot_getattr(slot, i + 1, &isnull);
+//			printf("%s\n", DatumGetCString(attr));
+			if (isnull)
+				continue;
+			getTypeOutputInfo(TupleDescAttr(typeinfo, i)->atttypid,
+							  &typoutput, &typisvarlena);
+
+			value = OidOutputFunctionCall(typoutput, attr);
+//			dataum_values[i] = Int32GetDatum(atoi(value));
+//			nulls[i]=0;
+			printf("Value: %s ", value);
+//			printf("Dataum values %ld\n", dataum_values[i]);
+//			printatt((unsigned) i + 1, TupleDescAttr(typeinfo, i), value);
+			Form_pg_attribute attributeP = TupleDescAttr(typeinfo, i);
+			char *att_name = NameStr(attributeP->attname);
+			printf("%s\n", att_name);
+		}
+		printf("\t----\n");
+
+		/* CS631 end */
+//		NameData rel_name;
+//		namestrcpy(&rel_name, relation_name);
+//		values[Anum_pg_ts_parser_prsname - 1] = NameGetDatum(&pname);
+		dataum_values[0] = CStringGetTextDatum(relation_name);
+		nulls[0]=0;
+		char *attribute_name = "marks";
+//		NameData att_name;
+//		namestrcpy(&att_name, attribute_name);
+		dataum_values[1] = CStringGetTextDatum(attribute_name);
+		nulls[1]=0;
+		dataum_values[2] = Int32GetDatum(30);
+		nulls[2]=0;
+
+		printf("RelationId - %d, Relation name - %s, Tuple - %d\n",new_relation->rd_id, RelationGetRelationName(new_relation), i);
+
+		HeapTuple new_tuple = heap_form_tuple(tupDesc, dataum_values, nulls);
+		heap_insert(new_relation, new_tuple, cid, options, bistate);
 
 		//ids student2-98781 student-16628, tmp_table-123380
 
-		Relation new_relation = RelationIdGetRelation(98781);
-		printf("RelationId - %d, Relation name - %s\n",new_relation->rd_id, RelationGetRelationName(new_relation));
-		heap_insert(new_relation, tuple, cid, options, bistate);
+
+//		printf("RelationId - %d, Relation name - %s\n",new_relation->rd_id, RelationGetRelationName(new_relation));
+//		bool		shouldFree = true;
+//		TM_Result	result;
+//		result = heap_update(new_relation, global_otid, tuple, global_cid, global_crosscheck, global_wait, global_tmfd, global_lockmode);
+//		heap_insert(new_relation, tuple, cid, options, bistate);
 		RelationClose(new_relation);
 	}
 
 
 
 	/* Perform the insertion, and copy the resulting ItemPointer */
-
+//	printf("Tuple's tid - %p\n", tuple->t_self);
 	heap_insert(relation, tuple, cid, options, bistate);
 
 	ItemPointerCopy(&tuple->t_self, &slot->tts_tid);
@@ -351,6 +424,7 @@ heapam_tuple_update(Relation relation, ItemPointer otid, TupleTableSlot *slot,
 					bool wait, TM_FailureData *tmfd,
 					LockTupleMode *lockmode, bool *update_indexes)
 {
+
 	bool		shouldFree = true;
 	HeapTuple	tuple = ExecFetchSlotHeapTuple(slot, true, &shouldFree);
 	TM_Result	result;
@@ -359,8 +433,23 @@ heapam_tuple_update(Relation relation, ItemPointer otid, TupleTableSlot *slot,
 	slot->tts_tableOid = RelationGetRelid(relation);
 	tuple->t_tableOid = slot->tts_tableOid;
 
+
+	//added by nadesh
+	printf("Storing %p and offset %d in global_tuple_id (heapam_tuple_update())\n", otid, otid->ip_posid);
+//	global_relation = relation;
+//	global_otid = otid;
+//	global_tuple = tuple;
+//	global_cid = cid;
+//	global_crosscheck = crosscheck;
+//	global_wait = wait;
+//	global_tmfd = tmfd;
+//	global_lockmode = lockmode;
+	//----------------
+
+
 	result = heap_update(relation, otid, tuple, cid, crosscheck, wait,
 						 tmfd, lockmode);
+	printf("Storing %p and offset %d in global_tuple_id (heapam_tuple_update())\n", otid, otid->ip_posid);
 	ItemPointerCopy(&tuple->t_self, &slot->tts_tid);
 
 	/*

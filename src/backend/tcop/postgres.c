@@ -4523,13 +4523,19 @@ PostgresMain(int argc, char *argv[],
 						 * and initialise them.
 						 */
 						if(!created){
-							char tmp_query[300];
-							sprintf(tmp_query,"insert into tmp_table values('student', 'id', 0, 0, %d, 0, 0)", INT_MAX);
-							exec_simple_query("create temp table tmp_table (relation_name varchar, column_name varchar, sum int, max int, min int, avg int, cnt int)");
-							exec_simple_query(tmp_query);
-							memset((char *)tmp_query, 0, 300);
-							sprintf(tmp_query,"insert into tmp_table values('student', 'marks', 0, 0, %d, 0, 0)", INT_MAX);
-							exec_simple_query(tmp_query);
+//							char tmp_query[300];
+//							sprintf(tmp_query,"insert into tmp_table values('student', 'id', 0, 0, %d, 0, 0)", INT_MAX);
+							exec_simple_query("create UNLOGGED table IF NOT EXISTS tmp_table (relation_name varchar, attribute_name varchar, attribute_value int)");
+
+							//added
+							exec_simple_query("TRUNCATE TABLE tmp_table");
+
+							//
+
+//							exec_simple_query(tmp_query);
+//							memset((char *)tmp_query, 0, 300);
+//							sprintf(tmp_query,"insert into tmp_table values('student', 'marks', 0, 0, %d, 0, 0)", INT_MAX);
+//							exec_simple_query(tmp_query);
 							created = true;
 						}
 
@@ -4549,7 +4555,7 @@ PostgresMain(int argc, char *argv[],
 							whereToSendOutput = DestTupleCustom;
 
 							// Get existing aggregate values from the in-memory relation
-							exec_simple_query("select * from tmp_table where relation_name='student' and column_name='id';");
+							exec_simple_query("select * from tmp_table where relation_name='student' and attribute_name='id';");
 							id_aggregates[0] = stream_aggregates.stream_sum;
 							id_aggregates[1] = stream_aggregates.stream_max;
 							id_aggregates[2] = stream_aggregates.stream_min;
@@ -4558,7 +4564,7 @@ PostgresMain(int argc, char *argv[],
 							stream_aggregates.stream_max = 0;
 							stream_aggregates.stream_min = 0;
 							stream_aggregates.stream_sum = 0;
-							exec_simple_query("select * from tmp_table where relation_name='student' and column_name='marks';");
+							exec_simple_query("select * from tmp_table where relation_name='student' and attribute_name='marks';");
 							marks_aggregates[0] = stream_aggregates.stream_sum;
 							marks_aggregates[1] = stream_aggregates.stream_max;
 							marks_aggregates[2] = stream_aggregates.stream_min;
@@ -4592,33 +4598,37 @@ PostgresMain(int argc, char *argv[],
 							new_marks_aggregates[3] = new_marks_aggregates[0]/new_marks_aggregates[4];
 
 							char tmp_query[300];
-							sprintf(tmp_query, "update tmp_table set sum=%d,max=%d,min=%d,avg=%d,cnt=%d where relation_name='student' and column_name='id';", new_id_aggregates[0], new_id_aggregates[1],new_id_aggregates[2],new_id_aggregates[3],new_id_aggregates[4]);
+							sprintf(tmp_query, "update tmp_table set sum=%d,max=%d,min=%d,avg=%d,cnt=%d where relation_name='student' and attribute_name='id';", new_id_aggregates[0], new_id_aggregates[1],new_id_aggregates[2],new_id_aggregates[3],new_id_aggregates[4]);
 							exec_simple_query(tmp_query);
 							memset((char *)tmp_query, 0, 300);
-							sprintf(tmp_query, "update tmp_table set sum=%d,max=%d,min=%d,avg=%d,cnt=%d where relation_name='student' and column_name='marks';", new_marks_aggregates[0], new_marks_aggregates[1],new_marks_aggregates[2],new_marks_aggregates[3],new_marks_aggregates[4]);
+							sprintf(tmp_query, "update tmp_table set sum=%d,max=%d,min=%d,avg=%d,cnt=%d where relation_name='student' and attribute_name='marks';", new_marks_aggregates[0], new_marks_aggregates[1],new_marks_aggregates[2],new_marks_aggregates[3],new_marks_aggregates[4]);
 							exec_simple_query(tmp_query);
 							exec_simple_query(query_string+7);
 						}
 						else{
+//							const char delim[2] = " ";
+//							char* tokens=strtok(query_string,delim);
+//							char query_str[200];
+//							sprintf(query_str,"select SUM(value) from tmp_table where relation_name='%s' and attribute_name='%s';",token = strtok(NULL, ),token = strtok(NULL, delim););
 							clock_t start, end;
 							double cpu_time_used;
 							whereToSendOutput = DestDebug;
 							start = clock();
 							// If we need to get the aggregate, we can use one of the 4 below commands to get the aggregates
 							if(strstr(query_string, "stream_sum") != NULL){
-								exec_simple_query("select sum from tmp_table where relation_name='student';");
+								exec_simple_query("select sum(attribute_value) from tmp_table where relation_name='student' and attribute_name='marks';");
 							}
 							else if(strstr(query_string, "stream_min") != NULL){
-								exec_simple_query("select min from tmp_table where relation_name='student';");
+								exec_simple_query("select MIN(attribute_value) from tmp_table where relation_name='student' and attribute_name='marks';");
 							}
 							else if(strstr(query_string, "stream_max") != NULL){
-								exec_simple_query("select max from tmp_table where relation_name='student';");
+								exec_simple_query("select MAX(attribute_value) from tmp_table where relation_name='student' and attribute_name='marks';");
 							}
 							else if(strstr(query_string, "stream_avg") != NULL){
-								exec_simple_query("select avg from tmp_table where relation_name='student';");
+								exec_simple_query("select AVG(attribute_value) from tmp_table where relation_name='student' and attribute_name='marks';");
 							}
 							else if(strstr(query_string, "stream_cnt") != NULL){
-								exec_simple_query("select cnt from tmp_table where relation_name='student';");
+								exec_simple_query("select COUNT(attribute_value) from tmp_table where relation_name='student' and attribute_name='marks';");
 							}
 							else{
 								// Runs normal queries.
