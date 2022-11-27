@@ -4170,7 +4170,7 @@ PostgresMain(int argc, char *argv[],
 
 	/* Welcome banner for standalone case */
 	if (whereToSendOutput == DestDebug)
-		printf("\nPostgreSQL stand-alone backend %s\n nadesh\n", PG_VERSION);
+		printf("\nPostgreSQL stand-alone backend %s\n", PG_VERSION);
 
 	/*
 	 * Create the memory context we will use in the main loop.
@@ -4516,6 +4516,8 @@ PostgresMain(int argc, char *argv[],
 							exec_simple_query(query_string);
 					}
 					else{
+						/* CS631 start */
+
 						/*
 						 * Initially, it creates the temporary in-memory table if one does not exist.
 						 * This block runs only once, before any query is run.
@@ -4523,19 +4525,17 @@ PostgresMain(int argc, char *argv[],
 						 * and initialise them.
 						 */
 						if(!created){
-//							char tmp_query[300];
-//							sprintf(tmp_query,"insert into tmp_table values('student', 'id', 0, 0, %d, 0, 0)", INT_MAX);
 							exec_simple_query("create UNLOGGED table IF NOT EXISTS tmp_table (relation_name varchar, attribute_name varchar, attribute_value int)");
-
-							//added
+							exec_simple_query("insert into tmp_table values('dummy', 'dummy', '0');");
 							exec_simple_query("TRUNCATE TABLE tmp_table");
 
-							//
-
-//							exec_simple_query(tmp_query);
-//							memset((char *)tmp_query, 0, 300);
-//							sprintf(tmp_query,"insert into tmp_table values('student', 'marks', 0, 0, %d, 0, 0)", INT_MAX);
-//							exec_simple_query(tmp_query);
+//							for(int i=0;i<100000;i++){
+//								exec_simple_query("create table if not exists testing(marks int);");
+//								char tmp_query[300];
+//								sprintf(tmp_query, "insert into testing values(%d)",1);
+//								exec_simple_query(tmp_query);
+//
+//							}
 							created = true;
 						}
 
@@ -4549,97 +4549,82 @@ PostgresMain(int argc, char *argv[],
 						/*
 						 * Check if the query is a stream.
 						 */
-						if(strcmp(substr, "stream ") == 0){
-							custom_stream_parse_function(query_string+7);
-							// Redirecting output to our own custom function to compute the aggregates.
-							whereToSendOutput = DestTupleCustom;
-
-							// Get existing aggregate values from the in-memory relation
-							exec_simple_query("select * from tmp_table where relation_name='student' and attribute_name='id';");
-							id_aggregates[0] = stream_aggregates.stream_sum;
-							id_aggregates[1] = stream_aggregates.stream_max;
-							id_aggregates[2] = stream_aggregates.stream_min;
-							id_aggregates[4] = id_aggregates[4] + stream_aggregates.stream_cnt;
-							stream_aggregates.stream_cnt = 0;
-							stream_aggregates.stream_max = 0;
-							stream_aggregates.stream_min = 0;
-							stream_aggregates.stream_sum = 0;
-							exec_simple_query("select * from tmp_table where relation_name='student' and attribute_name='marks';");
-							marks_aggregates[0] = stream_aggregates.stream_sum;
-							marks_aggregates[1] = stream_aggregates.stream_max;
-							marks_aggregates[2] = stream_aggregates.stream_min;
-							marks_aggregates[4] = marks_aggregates[4] + stream_aggregates.stream_cnt;
-
-							stream_aggregates.stream_cnt = 0;
-							stream_aggregates.stream_max = 0;
-							stream_aggregates.stream_min = 0;
-							stream_aggregates.stream_sum = 0;
-
-
-							new_id_aggregates[0] = id_aggregates[0] + stream_values.id;
-							if(id_aggregates[1] < stream_values.id){
-								new_id_aggregates[1] = stream_values.id;
-							}
-							if(id_aggregates[2] > stream_values.id){
-								new_id_aggregates[2] = stream_values.id;
-							}
-							new_id_aggregates[4] = id_aggregates[4] ;
-							new_id_aggregates[3] = new_id_aggregates[0]/new_id_aggregates[4];
-
-
-							new_marks_aggregates[0] = marks_aggregates[0] + stream_values.marks;
-							if(marks_aggregates[1] < stream_values.marks){
-								new_marks_aggregates[1] = stream_values.marks;
-							}
-							if(marks_aggregates[2] > stream_values.marks){
-								new_marks_aggregates[2] = stream_values.marks;
-							}
-							new_marks_aggregates[4] = marks_aggregates[4];
-							new_marks_aggregates[3] = new_marks_aggregates[0]/new_marks_aggregates[4];
-
-							char tmp_query[300];
-							sprintf(tmp_query, "update tmp_table set sum=%d,max=%d,min=%d,avg=%d,cnt=%d where relation_name='student' and attribute_name='id';", new_id_aggregates[0], new_id_aggregates[1],new_id_aggregates[2],new_id_aggregates[3],new_id_aggregates[4]);
-							exec_simple_query(tmp_query);
-							memset((char *)tmp_query, 0, 300);
-							sprintf(tmp_query, "update tmp_table set sum=%d,max=%d,min=%d,avg=%d,cnt=%d where relation_name='student' and attribute_name='marks';", new_marks_aggregates[0], new_marks_aggregates[1],new_marks_aggregates[2],new_marks_aggregates[3],new_marks_aggregates[4]);
-							exec_simple_query(tmp_query);
-							exec_simple_query(query_string+7);
-						}
-						else{
-//							const char delim[2] = " ";
-//							char* tokens=strtok(query_string,delim);
-//							char query_str[200];
-//							sprintf(query_str,"select SUM(value) from tmp_table where relation_name='%s' and attribute_name='%s';",token = strtok(NULL, ),token = strtok(NULL, delim););
-							clock_t start, end;
-							double cpu_time_used;
-							whereToSendOutput = DestDebug;
-							start = clock();
-							// If we need to get the aggregate, we can use one of the 4 below commands to get the aggregates
-							if(strstr(query_string, "stream_sum") != NULL){
-								exec_simple_query("select sum(attribute_value) from tmp_table where relation_name='student' and attribute_name='marks';");
-							}
-							else if(strstr(query_string, "stream_min") != NULL){
-								exec_simple_query("select MIN(attribute_value) from tmp_table where relation_name='student' and attribute_name='marks';");
-							}
-							else if(strstr(query_string, "stream_max") != NULL){
-								exec_simple_query("select MAX(attribute_value) from tmp_table where relation_name='student' and attribute_name='marks';");
-							}
-							else if(strstr(query_string, "stream_avg") != NULL){
-								exec_simple_query("select AVG(attribute_value) from tmp_table where relation_name='student' and attribute_name='marks';");
-							}
-							else if(strstr(query_string, "stream_cnt") != NULL){
-								exec_simple_query("select COUNT(attribute_value) from tmp_table where relation_name='student' and attribute_name='marks';");
+							if(strcmp(substr, "stream ") != 0)
+							{
+								whereToSendOutput = DestDebug;
+								clock_t start, end;
+								double cpu_time_used;
+								start = clock();
+								exec_simple_query(query_string);
+								end = clock();
+								cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+								printf("Time taken to execute query: %f \n", cpu_time_used);
 							}
 							else{
-								// Runs normal queries.
-								whereToSendOutput = DestDebug;
-								exec_simple_query(query_string);
-							}
-							end = clock();
-							cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
-//							printf("Time taken to execute query: %f \n", cpu_time_used);
+									const char delim[2] = " ";
+									char* querytype=strtok(query_string,delim);
+									char* querystr=strtok(NULL,delim);
+									char* relname=strtok(NULL,delim);
+									char* attrname=strtok(NULL,delim);
+									int att_size = strlen(attrname);
+//									printf("%d\n", att_size);
+//									printf("%c\n", attrname[att_size-2]);
 
-						}
+									if(attrname[att_size-2]==';'){
+										attrname[att_size-2]='\0';
+									}
+
+//									printf("%s %s %s %s\n",querytype,querystr,relname,attrname);
+									char query_str[200];
+		//							sprintf(query_str,"select SUM(value) from tmp_table where relation_name='%s' and attribute_name='%s';",relname,attrname);
+		//							printf("%s",query_str);
+		//							sprintf(query_str,"select SUM(value) from tmp_table where relation_name='%s' and attribute_name='%s';",token = strtok(NULL, ),token = strtok(NULL, delim););
+									clock_t start, end;
+									double cpu_time_used;
+									whereToSendOutput = DestDebug;
+									// If we need to get the aggregate, we can use one of the 4 below commands to get the aggregates
+									if(strstr(querystr, "sum") != NULL){
+										sprintf(query_str,"select SUM(attribute_value) from tmp_table where relation_name='%s' and attribute_name='%s';",relname,attrname);
+
+										start = clock();
+										exec_simple_query(query_str);
+										end = clock();
+									}
+									else if(strstr(querystr, "min") != NULL){
+										sprintf(query_str,"select MIN(attribute_value) from tmp_table where relation_name='%s' and attribute_name='%s';",relname,attrname);
+										start = clock();
+										exec_simple_query(query_str);
+										end = clock();
+									}
+									else if(strstr(querystr, "max") != NULL){
+										sprintf(query_str,"select MAX(attribute_value) from tmp_table where relation_name='%s' and attribute_name='%s';",relname,attrname);
+										start = clock();
+										exec_simple_query(query_str);
+										end = clock();
+									}
+									else if(strstr(querystr, "avg") != NULL){
+										sprintf(query_str,"select AVG(attribute_value) from tmp_table where relation_name='%s' and attribute_name='%s';",relname,attrname);
+										start = clock();
+										exec_simple_query(query_str);
+										end = clock();
+									}
+									else if(strstr(querystr, "cnt") != NULL){
+										sprintf(query_str,"select COUNT(attribute_value) from tmp_table where relation_name='%s' and attribute_name='%s';",relname,attrname);
+										start = clock();
+										exec_simple_query(query_str);
+										end = clock();
+									}
+									else{
+										// Runs normal queries.
+										whereToSendOutput = DestDebug;
+										start = clock();
+										exec_simple_query(query_str);
+										end = clock();
+									}
+									cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+									printf("Time taken to execute query: %f \n", cpu_time_used);
+							}
+							/* CS631 end */
 
 					}
 
