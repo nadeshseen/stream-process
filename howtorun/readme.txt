@@ -13,6 +13,14 @@ Modify existing stream queries at the parsing level to support the above changes
 
 We have also documented how to modify the existing insert query at execution level.
 
+We have modified postgres.c, heapam_handler.c files and have used functions from heaptuple.c
+and printtup.c. The parsing level code is in postgres.c and the execution level changes are done
+in heapam_tuple_insert() function in heapam_handler.c. We have studied the following data
+structures TupleTableSlot and HeapTupleHeader. These are some of the important data structures
+that we needed to study to in order to implement stream inserts at execution level. debugtup(),
+RelationIdGetRelation(), CreateTupleDesc() and heap_form_tuple() are some of the important
+functions that are used in our system.
+
 Members
 Nadesh Seen     - 21q050003
 Pritam Sil         - 21q05r001
