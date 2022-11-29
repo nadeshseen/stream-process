@@ -5,8 +5,13 @@ This project aims to introduce the stream processing in PostgreSQL. We have used
 as per the format \verb!(relation_name,attribute_name, attribute_values)!. Whenever the user executes a stream aggregate query, the system will automatically calculate the aggregate from the \verb!tmp_table! and display the output. 
 
 In the earlier system for each insert, aggregate results are calculated as it arrives. Five aggregates are calculated i.e. sum, min, max, avg and count. 
-The results are stored in a temporary relation that resides in-memory. 
-The problem here is that this currently works on only a table named “student” with column “marks” and “id”
+The results are stored in a temporary relation that resides in-memory. The problem earlier was that it worked on only a table named “student” with column “marks” and “id”.
+We propose the following solution to this problem.
+
+Implement stream inserts at the execution level and make the current system more generic. For any insert query, postgres will automatically update the temp table and reduce the time taken to calculate aggregation queries. 
+Modify existing stream queries at the parsing level to support the above changes.
+
+We have also documented how to modify the existing insert query at execution level.
 
 Members
 Nadesh Seen     - 21q050003
