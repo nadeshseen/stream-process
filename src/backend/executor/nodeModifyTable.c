@@ -1649,19 +1649,19 @@ ExecUpdate(ModifyTableState *mtstate,
 {
 
 	//added by nadesh
-	global_mtstate=mtstate;
-	global_resultRelInfo=resultRelInfo;
-	global_tupleid=tupleid;
-	global_tupleid->ip_blkid = tupleid->ip_blkid;
-	global_tupleid->ip_blkid.bi_hi = tupleid->ip_blkid.bi_hi;
-	global_tupleid->ip_blkid.bi_lo = tupleid->ip_blkid.bi_lo;
-	global_tupleid->ip_posid = tupleid->ip_posid;
-	global_oldtuple=oldtuple;
-	global_slot=slot;
-	global_planSlot=planSlot;
-	global_epqstate=epqstate;
-	global_estate=estate;
-	global_canSetTag=canSetTag;
+//	global_mtstate=mtstate;
+//	global_resultRelInfo=resultRelInfo;
+//	global_tupleid=tupleid;
+//	global_tupleid->ip_blkid = tupleid->ip_blkid;
+//	global_tupleid->ip_blkid.bi_hi = tupleid->ip_blkid.bi_hi;
+//	global_tupleid->ip_blkid.bi_lo = tupleid->ip_blkid.bi_lo;
+//	global_tupleid->ip_posid = tupleid->ip_posid;
+//	global_oldtuple=oldtuple;
+//	global_slot=slot;
+//	global_planSlot=planSlot;
+//	global_epqstate=epqstate;
+//	global_estate=estate;
+//	global_canSetTag=canSetTag;
 	//---------------
 
 

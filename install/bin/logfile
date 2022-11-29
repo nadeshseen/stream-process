@@ -751,3 +751,112 @@ backend> 2022-10-15 23:55:32.078 IST [106189] LOG:  received fast shutdown reque
 2022-10-16 00:10:49.226 IST [112432] LOG:  background worker "logical replication launcher" (PID 112439) exited with exit code 1
 2022-10-16 00:10:49.227 IST [112434] LOG:  shutting down
 2022-10-16 00:10:49.238 IST [112432] LOG:  database system is shut down
+2022-11-28 16:57:58.080 IST [64835] LOG:  starting PostgreSQL 14.5 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0, 64-bit
+2022-11-28 16:57:58.080 IST [64835] LOG:  listening on IPv4 address "127.0.0.1", port 9432
+2022-11-28 16:57:58.081 IST [64835] LOG:  listening on Unix socket "/tmp/.s.PGSQL.9432"
+2022-11-28 16:57:58.084 IST [64836] LOG:  database system was shut down at 2022-11-28 16:57:27 IST
+2022-11-28 16:57:58.086 IST [64835] LOG:  database system is ready to accept connections
+	 1: id	(typeid = 23, len = 4, typmod = -1, byval = t)
+	 2: marks	(typeid = 23, len = 4, typmod = -1, byval = t)
+	----
+	 1: id = "1"	(typeid = 23, len = 4, typmod = -1, byval = t)
+	 2: marks = "20"	(typeid = 23, len = 4, typmod = -1, byval = t)
+	----
+	 1: id = "1"	(typeid = 23, len = 4, typmod = -1, byval = t)
+	 2: marks = "23"	(typeid = 23, len = 4, typmod = -1, byval = t)
+	----
+	 1: id = "3"	(typeid = 23, len = 4, typmod = -1, byval = t)
+	 2: marks = "40"	(typeid = 23, len = 4, typmod = -1, byval = t)
+	----
+	 1: id = "2"	(typeid = 23, len = 4, typmod = -1, byval = t)
+	 2: marks = "3"	(typeid = 23, len = 4, typmod = -1, byval = t)
+	----
+Time taken to execute query: 0.000315 
+backend> 2022-11-28 17:02:54.567 IST [64835] LOG:  received fast shutdown request
+2022-11-28 17:02:54.568 IST [64835] LOG:  aborting any active transactions
+2022-11-28 17:02:54.569 IST [64835] LOG:  background worker "logical replication launcher" (PID 64842) exited with exit code 1
+2022-11-28 17:02:54.569 IST [64837] LOG:  shutting down
+2022-11-28 17:02:54.580 IST [64835] LOG:  database system is shut down
+2022-11-28 17:04:36.715 IST [66060] LOG:  starting PostgreSQL 14.5 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0, 64-bit
+2022-11-28 17:04:36.715 IST [66060] LOG:  listening on IPv4 address "0.0.0.0", port 9432
+2022-11-28 17:04:36.715 IST [66060] LOG:  listening on IPv6 address "::", port 9432
+2022-11-28 17:04:36.717 IST [66060] LOG:  listening on Unix socket "/tmp/.s.PGSQL.9432"
+2022-11-28 17:04:36.720 IST [66061] LOG:  database system was shut down at 2022-11-28 17:02:54 IST
+2022-11-28 17:04:36.722 IST [66060] LOG:  database system is ready to accept connections
+	 1: id	(typeid = 23, len = 4, typmod = -1, byval = t)
+	 2: marks	(typeid = 23, len = 4, typmod = -1, byval = t)
+	----
+	 1: id = "1"	(typeid = 23, len = 4, typmod = -1, byval = t)
+	 2: marks = "20"	(typeid = 23, len = 4, typmod = -1, byval = t)
+	----
+	 1: id = "1"	(typeid = 23, len = 4, typmod = -1, byval = t)
+	 2: marks = "23"	(typeid = 23, len = 4, typmod = -1, byval = t)
+	----
+	 1: id = "3"	(typeid = 23, len = 4, typmod = -1, byval = t)
+	 2: marks = "40"	(typeid = 23, len = 4, typmod = -1, byval = t)
+	----
+	 1: id = "2"	(typeid = 23, len = 4, typmod = -1, byval = t)
+	 2: marks = "3"	(typeid = 23, len = 4, typmod = -1, byval = t)
+	----
+Time taken to execute query: 0.000452 
+backend> 2022-11-28 17:06:09.201 IST [66060] LOG:  received fast shutdown request
+2022-11-28 17:06:09.202 IST [66060] LOG:  aborting any active transactions
+2022-11-28 17:06:09.202 IST [66060] LOG:  background worker "logical replication launcher" (PID 66068) exited with exit code 1
+2022-11-28 17:06:09.202 IST [66062] LOG:  shutting down
+2022-11-28 17:06:09.214 IST [66060] LOG:  database system is shut down
+2022-11-28 17:06:30.430 IST [66466] LOG:  starting PostgreSQL 14.5 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0, 64-bit
+2022-11-28 17:06:30.430 IST [66466] LOG:  listening on IPv4 address "0.0.0.0", port 9432
+2022-11-28 17:06:30.430 IST [66466] LOG:  listening on IPv6 address "::", port 9432
+2022-11-28 17:06:30.431 IST [66466] LOG:  listening on Unix socket "/tmp/.s.PGSQL.9432"
+2022-11-28 17:06:30.434 IST [66467] LOG:  database system was shut down at 2022-11-28 17:06:09 IST
+2022-11-28 17:06:30.436 IST [66466] LOG:  database system is ready to accept connections
+	 1: id	(typeid = 23, len = 4, typmod = -1, byval = t)
+	 2: marks	(typeid = 23, len = 4, typmod = -1, byval = t)
+	----
+	 1: id = "1"	(typeid = 23, len = 4, typmod = -1, byval = t)
+	 2: marks = "20"	(typeid = 23, len = 4, typmod = -1, byval = t)
+	----
+	 1: id = "1"	(typeid = 23, len = 4, typmod = -1, byval = t)
+	 2: marks = "23"	(typeid = 23, len = 4, typmod = -1, byval = t)
+	----
+	 1: id = "3"	(typeid = 23, len = 4, typmod = -1, byval = t)
+	 2: marks = "40"	(typeid = 23, len = 4, typmod = -1, byval = t)
+	----
+	 1: id = "2"	(typeid = 23, len = 4, typmod = -1, byval = t)
+	 2: marks = "3"	(typeid = 23, len = 4, typmod = -1, byval = t)
+	----
+Time taken to execute query: 0.000287 
+backend> 2022-11-28 17:07:25.771 IST [67704] FATAL:  lock file "postmaster.pid" already exists
+2022-11-28 17:07:25.771 IST [67704] HINT:  Is another postmaster (PID 66466) running in data directory "/home/nadesh/git/postgresql/install/data"?
+2022-11-28 17:07:33.314 IST [66466] LOG:  received fast shutdown request
+2022-11-28 17:07:33.315 IST [66466] LOG:  aborting any active transactions
+2022-11-28 17:07:33.316 IST [66466] LOG:  background worker "logical replication launcher" (PID 66473) exited with exit code 1
+2022-11-28 17:07:33.316 IST [66468] LOG:  shutting down
+2022-11-28 17:07:33.325 IST [66466] LOG:  database system is shut down
+2022-11-28 17:07:35.119 IST [67805] LOG:  starting PostgreSQL 14.5 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0, 64-bit
+2022-11-28 17:07:35.120 IST [67805] LOG:  listening on IPv4 address "0.0.0.0", port 9432
+2022-11-28 17:07:35.120 IST [67805] LOG:  listening on IPv6 address "::", port 9432
+2022-11-28 17:07:35.121 IST [67805] LOG:  listening on Unix socket "/tmp/.s.PGSQL.9432"
+2022-11-28 17:07:35.123 IST [67806] LOG:  database system was shut down at 2022-11-28 17:07:33 IST
+2022-11-28 17:07:35.125 IST [67805] LOG:  database system is ready to accept connections
+	 1: id	(typeid = 23, len = 4, typmod = -1, byval = t)
+	 2: marks	(typeid = 23, len = 4, typmod = -1, byval = t)
+	----
+	 1: id = "1"	(typeid = 23, len = 4, typmod = -1, byval = t)
+	 2: marks = "20"	(typeid = 23, len = 4, typmod = -1, byval = t)
+	----
+	 1: id = "1"	(typeid = 23, len = 4, typmod = -1, byval = t)
+	 2: marks = "23"	(typeid = 23, len = 4, typmod = -1, byval = t)
+	----
+	 1: id = "3"	(typeid = 23, len = 4, typmod = -1, byval = t)
+	 2: marks = "40"	(typeid = 23, len = 4, typmod = -1, byval = t)
+	----
+	 1: id = "2"	(typeid = 23, len = 4, typmod = -1, byval = t)
+	 2: marks = "3"	(typeid = 23, len = 4, typmod = -1, byval = t)
+	----
+Time taken to execute query: 0.000210 
+backend> 2022-11-28 17:13:39.112 IST [67805] LOG:  received fast shutdown request
+2022-11-28 17:13:39.113 IST [67805] LOG:  aborting any active transactions
+2022-11-28 17:13:39.114 IST [67805] LOG:  background worker "logical replication launcher" (PID 67812) exited with exit code 1
+2022-11-28 17:13:39.114 IST [67807] LOG:  shutting down
+2022-11-28 17:13:39.120 IST [67805] LOG:  database system is shut down

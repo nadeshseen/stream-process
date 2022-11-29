@@ -4529,6 +4529,7 @@ PostgresMain(int argc, char *argv[],
 							exec_simple_query("insert into tmp_table values('dummy', 'dummy', '0');");
 							exec_simple_query("TRUNCATE TABLE tmp_table");
 
+							//Inserting multiple rows for testing performance
 //							for(int i=0;i<100000;i++){
 //								exec_simple_query("create table if not exists testing(marks int);");
 //								char tmp_query[300];
@@ -4576,9 +4577,9 @@ PostgresMain(int argc, char *argv[],
 
 //									printf("%s %s %s %s\n",querytype,querystr,relname,attrname);
 									char query_str[200];
-		//							sprintf(query_str,"select SUM(value) from tmp_table where relation_name='%s' and attribute_name='%s';",relname,attrname);
-		//							printf("%s",query_str);
-		//							sprintf(query_str,"select SUM(value) from tmp_table where relation_name='%s' and attribute_name='%s';",token = strtok(NULL, ),token = strtok(NULL, delim););
+//									sprintf(query_str,"select SUM(value) from tmp_table where relation_name='%s' and attribute_name='%s';",relname,attrname);
+//									printf("%s",query_str);
+//									sprintf(query_str,"select SUM(value) from tmp_table where relation_name='%s' and attribute_name='%s';",token = strtok(NULL, ),token = strtok(NULL, delim););
 									clock_t start, end;
 									double cpu_time_used;
 									whereToSendOutput = DestDebug;
